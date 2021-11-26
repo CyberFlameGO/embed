@@ -25,6 +25,30 @@ export const ThemeProvider = ({ children }) => {
 
   const { data: {settings} } = useQuery<Settings>(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' })
 
+  const allowedDomains = settings?.allowedDomains
+  if (allowedDomains?.length > 0) {
+    let allowed = true
+
+    // @ts-expect-error
+    if (location.ancestorOrigins?.length > 0 && ![...location.ancestorOrigins].some(origin => allowedDomains.some(d => origin.includes(d)))) {
+      console.error('WidgetBot: allowedDomains failed ancestorOrigins check', location.ancestorOrigins, allowedDomains)
+      allowed = false
+    }
+
+    if (!location.ancestorOrigins && document.referrer && !allowedDomains.some(d => document.referrer.includes(d))) {
+      console.error('WidgetBot: allowedDomains failed referrer check', document.referrer, allowedDomains)
+      allowed = false
+    }
+
+    if (!allowed) return <>
+      <div style={{color: 'white', fontFamily: 'sans-serif'}}>
+        <p>This Discord server does not allow being embedded on this website.</p>
+        <p>Discord embed powered by <a href="https://widgetbot.io" target="_blank" rel="noopener" style={{color: 'white'}}>WidgetBot.io</a></p>
+      </div>
+      <style>{'#root {opacity: 100%}'}</style>
+    </>
+  }
+
   let theme: Settings_settings_theme = {
     __typename: 'ThemeSettings',
     colors: {
