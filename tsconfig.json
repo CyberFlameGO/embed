@@ -4,7 +4,7 @@
     "skipLibCheck": true,
     "target": "es2019",
     "module": "es2020",
-    "lib": ["esnext", "es6", "dom"],
+    "lib": ["esnext", "es6", "dom", "dom.iterable"],
     "sourceMap": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,

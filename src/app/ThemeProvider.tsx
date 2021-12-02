@@ -29,7 +29,6 @@ export const ThemeProvider = ({ children }) => {
   if (allowedDomains?.length > 0) {
     let allowed = true
 
-    // @ts-expect-error
     if (location.ancestorOrigins?.length > 0 && ![...location.ancestorOrigins].some(origin => allowedDomains.some(d => origin.includes(d)))) {
       console.error('WidgetBot: allowedDomains failed ancestorOrigins check', location.ancestorOrigins, allowedDomains)
       allowed = false
