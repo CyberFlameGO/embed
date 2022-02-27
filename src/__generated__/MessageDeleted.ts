@@ -19,4 +19,5 @@ export interface MessageDeleted {
 export interface MessageDeletedVariables {
   channel: string;
   guild: string;
+  threadId?: string | null;
 }

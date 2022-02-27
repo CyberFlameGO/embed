@@ -1,5 +1,5 @@
 import {action, autorun, observable} from "mobx";
-import {GuildInfo_guild, Settings_settings} from "@generated";
+import { GuildInfo_guild, Message_thread, Settings_settings } from "@generated";
 import {ICategory} from "@ui/Sidebar/Channels/categorise";
 
 export class GeneralStore {
@@ -12,6 +12,9 @@ export class GeneralStore {
   @observable settings?: Settings_settings;
   @observable channels: ICategory[] = [];
   @observable menuOpen: boolean = false;
+  @observable activeThread?: Omit<Message_thread, '__typename'>;
+  @observable threadFullscreen: boolean = false;
+  @observable file?: File;
 
   constructor() {
     autorun(() => {
@@ -36,6 +39,24 @@ export class GeneralStore {
 
   @action setChannels(channels: ICategory[]) {
     this.channels = channels
+  }
+
+  @action setActiveThread(data: Omit<Message_thread, '__typename'>) {
+    this.activeThread = data;
+  }
+
+  @action setThreadFullscreen(fullscreen: boolean) {
+    this.threadFullscreen = fullscreen;
+  }
+
+  @action clearThread() {
+    // TODO: Set activeThread to null - this is for testing
+    this.activeThread = null;
+    this.threadFullscreen = false;
+  }
+
+  @action setFile(file: File) {
+    this.file = file;
   }
 }
 

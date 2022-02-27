@@ -2,25 +2,34 @@ import matchSorter from 'match-sorter'
 import * as React from 'react'
 import { Hash } from '@ui/shared/Channel'
 
-import { Description, Icon, Name } from '../elements'
+import { Description, Icon, Info, Name } from '../elements'
 import { Suggestion } from '../types'
 
 interface Command {
-  id: string
   name: string
-  type: 'role' | 'user' | string
+  description: string
 }
 
 const commands: Command[] = [
   {
-    id: '96626362277720064',
-    name: 'Daave#0001',
-    type: 'user'
+    name: 'shrug',
+    description: 'Appends ¯\\_(ツ)_/¯ to your message.'
   },
   {
-    id: '242097488507568128',
-    name: 'viction#0001',
-    type: 'user'
+    name: 'tableflip',
+    description: 'Appends (╯°□°）╯︵ ┻━┻ to your message.'
+  },
+  {
+    name: 'unflip',
+    description: 'Appends ┬─┬ ノ( ゜-゜ノ) to your message.'
+  },
+  {
+    name: 'me',
+    description: 'Displays text with emphasis.'
+  },
+  {
+    name: 'spoiler',
+    description: 'Marks your message as a spoiler.'
   }
 ]
 
@@ -41,7 +50,7 @@ const Commands: Suggestion<Command> = {
   toString: ({ name }) => `/${name}`,
 
   description: query => (
-    <Description>
+    <Description className="description">
       Commands
       {query ? (
         <React.Fragment>
@@ -52,12 +61,11 @@ const Commands: Suggestion<Command> = {
     </Description>
   ),
 
-  suggestion: ({ name }) => (
+  suggestion: ({ name, description }) => (
     <React.Fragment>
-      <Icon>
-        <Hash />
-      </Icon>
-      <Name>{name}</Name>
+      <Icon><svg width="16" height="16" viewBox="0 0 16 16"><g fill="none" fillRule="evenodd"><rect width="16" height="16"></rect><polygon fill="currentColor" points="12 2.32 10.513 2 4 13.68 5.487 14"></polygon></g></svg></Icon>
+      <Name className="name">{name}</Name>
+      <Info className="info">{description}</Info>
     </React.Fragment>
   )
 }

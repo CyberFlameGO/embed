@@ -112,13 +112,6 @@ export interface SubscriptionMessage_referencedMessage {
   interaction: SubscriptionMessage_referencedMessage_interaction | null;
 }
 
-export interface SubscriptionMessage_application {
-  __typename: "Application";
-  id: string;
-  name: string;
-  icon: string;
-}
-
 export interface SubscriptionMessage_embeds_author {
   __typename: "EmbedAuthor";
   url: string | null;
@@ -205,6 +198,15 @@ export interface SubscriptionMessage_interaction {
   user: SubscriptionMessage_interaction_user;
 }
 
+export interface SubscriptionMessage_thread {
+  __typename: "Thread";
+  id: string;
+  name: string;
+  archivedAt: any | null;
+  locked: boolean;
+  messageCount: number;
+}
+
 export interface SubscriptionMessage {
   __typename: "Message";
   id: string;
@@ -220,8 +222,8 @@ export interface SubscriptionMessage {
   reactions: SubscriptionMessage_reactions[] | null;
   messageReference: SubscriptionMessage_messageReference | null;
   referencedMessage: SubscriptionMessage_referencedMessage | null;
-  application: SubscriptionMessage_application | null;
   embeds: SubscriptionMessage_embeds[];
   mentions: SubscriptionMessage_mentions[];
   interaction: SubscriptionMessage_interaction | null;
+  thread: SubscriptionMessage_thread | null;
 }

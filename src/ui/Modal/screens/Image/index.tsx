@@ -1,10 +1,9 @@
 import { Root, OpenImage } from './elements'
-import { Trans } from '@lingui/react'
 import { Box, Close } from '@ui/Modal'
-import { useObserver } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 import { store } from '@models'
 
-const Image = useObserver(() => {
+const Image = observer(() => {
   return (
     <Box>
       <Close onClick={store.modal.close} />
@@ -15,7 +14,7 @@ const Image = useObserver(() => {
         target="_blank"
         onClick={store.modal.close}
       >
-        <Trans id="Modal.openOriginal">Open original</Trans>
+        Open original
       </OpenImage>
     </Box>
   )

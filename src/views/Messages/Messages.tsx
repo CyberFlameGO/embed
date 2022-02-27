@@ -2,35 +2,24 @@ import { useMessages } from "@hooks";
 import { formatError, groupMessages } from "./utils";
 import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
 import { Info, Loading, NoMessages } from "@ui/Overlays";
-import { MessageList, MessagesWrapper, Scroller } from "./elements";
-import {
-  CellMeasurer,
-  CellMeasurerCache,
-} from "react-virtualized";
-import { observer, useObservable } from "mobx-react-lite";
+import { MessageList, MessagesWrapper } from "./elements";
+import { observer } from "mobx-react-lite";
 import Message from "@ui/Message";
 import {Locale} from "@lib/Locale";
 import { addNotification } from "notify";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { createRef, useState } from "react";
-import { Simulate } from "react-dom/test-utils";
-import scroll = Simulate.scroll;
+import { generalStore } from "@store";
 
 type MessagesProps = {
   guild: string;
   channel: string;
+  thread?: boolean;
 };
 
-export const Messages = observer(({ guild, channel }: MessagesProps) => {
-  const { messages, error, ready, stale, fetchMore } = useMessages(channel, guild);
+export const Messages = observer(({ guild, channel, thread = false }: MessagesProps) => {
+  const { messages, error, ready, stale, fetchMore } = useMessages(channel, guild, thread ? generalStore.activeThread.id : null);
   const groupedMessages = groupMessages(messages);
-  const scroller = useObservable({
-    isLoadingMore: false,
-    readyToLoadMore: false,
-    width: null,
-    count: -1,
-    scrollToIndex: -1
-  });
 
   const [readyToLoadMore, setReadyToLoadMore] = useState(true);
   const scrollableTarget = createRef<HTMLDivElement>();
@@ -57,21 +46,6 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
     return true;
   }
 
-  const getKey = (rowIndex: number) => {
-    const group = groupedMessages[rowIndex];
-    const ids = group ? group.map(m => m.id).join(":") : "placeholder";
-
-    // Given the following data points, the group should be identical
-    const identifier = [guild, channel, ids, scroller.width];
-
-    return identifier.join("$");
-  };
-
-  const cache = new CellMeasurerCache({
-    fixedWidth: true,
-    keyMapper: getKey
-  });
-
   if (error) addNotification({
     level: 'warning',
     title: Locale.translate('frontend.notif.loaderror.messages'),
@@ -88,11 +62,6 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
         <Info>{Locale.translate('frontend.nomessages')}</Info>
       </NoMessages>
     );
-
-  const index =
-    scroller.scrollToIndex < 0
-      ? groupedMessages.length + scroller.scrollToIndex
-      : scroller.scrollToIndex;
 
   return (
     <MessagesWrapper stale={stale} className="messages">

@@ -31,7 +31,8 @@
       "notify": ["src/app/notify.tsx"],
       "locales": ["src/app/locales"],
       "locales/*": ["src/app/locales/*"],
-      "embed-api": ["src/lib/embed-api"]
+      "embed-api": ["src/lib/embed-api"],
+      "@images/*": ["src/app/res/images/*"]
     },
     "plugins": [
       {

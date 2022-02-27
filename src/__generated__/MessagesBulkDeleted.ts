@@ -19,4 +19,5 @@ export interface MessagesBulkDeleted {
 export interface MessagesBulkDeletedVariables {
   channel: string;
   guild: string;
+  threadId?: string | null;
 }

@@ -2,6 +2,7 @@
 
 query Messages(
     $channel: String!
+    $thread: String
     $around: String
     $before: String
     $after: String
@@ -10,12 +11,12 @@ query Messages(
     channel(id: $channel) {
         id
         ... on TextChannel {
-            messages(limit: $limit, after: $after, before: $before, around: $around) {
+            messages(id: $thread, limit: $limit, after: $after, before: $before, around: $around) {
                 ...Message
             }
         }
         ... on AnnouncementChannel {
-            messages(limit: $limit, after: $after, before: $before, around: $around) {
+            messages(id: $thread, limit: $limit, after: $after, before: $before, around: $around) {
             ...Message
             }
         }

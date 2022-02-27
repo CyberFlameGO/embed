@@ -1,0 +1,80 @@
+#import "./Embed.graphql"
+
+# Most edits to this file should also be done in
+# SubscriptionMessage.graphql and UpdatedMessage.grapgql
+
+fragment BaseMessage on Message {
+    id
+    content
+    type
+    flags
+    createdAt
+    editedAt
+    isGuest
+
+    author {
+        avatarUrl
+        bot
+        color
+        discrim
+        id
+        flags
+        name
+    }
+
+    attachments {
+        url
+        height
+        width
+        filename
+        size
+    }
+
+    stickers {
+        id
+        name
+        formatType
+        lottieData
+    }
+
+    reactions {
+        count
+        emojiId
+        emojiName
+        animated
+    }
+
+    messageReference {
+        guildId
+        channelId
+        messageId
+    }
+
+    embeds {
+        ...Embed
+    }
+
+    mentions {
+        id
+        type
+        name
+    }
+
+    interaction {
+        name
+        user {
+            id
+            username
+            discriminator
+            avatarUrl
+        }
+    }
+
+    thread {
+        id
+        name
+        archivedAt
+        locked
+        messageCount
+    }
+}

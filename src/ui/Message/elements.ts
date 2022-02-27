@@ -1,5 +1,15 @@
 import webpCheck from '@ui/shared/webpCheck'
+import { shouldShowContext } from '.';
 import { MemberLink } from '@ui/shared/Member'
+import { Message } from '@generated';
+import { MessageType } from '@generated/globalTypes';
+
+import add from '@images/discordAssets/e06a573355c490f7ce6e3125ac01db81.svg'
+import remove from '@images/discordAssets/f772d3d7eddcf3c84f710c10999479f0.svg'
+import pencil from '@images/discordAssets/1688a01d0e6f27bead9ae6ca9e51dd32.svg'
+import pin from '@images/discordAssets/5da4cdab01d4d89c593c48c62ae0d937.svg'
+import x from '@images/discordAssets/c7078943fc392e7dede27a20e6cfdcfb.svg'
+import check from '@images/discordAssets/86b5987e685f72352730d56690393fc8.svg'
 
 import styled from './ThemeContext'
 
@@ -30,6 +40,15 @@ export const ReplySpine = styled.div`
   border-left: 2px solid #4f545c;
   border-top: 2px solid #4f545c;
   border-top-left-radius: 6px;
+
+  @media (max-width: 500px), (max-height: 370px) {
+    top: 20px;
+    left: 35px;
+  }
+
+  @media (max-width: 260px) {
+    left: 30px;
+  }
 `
 
 export const RepliedMessage = styled.div`
@@ -56,7 +75,7 @@ export const RepliedUser = styled.span<RepliedUserProps>`
 `
 
 export const RepliedText = styled.div`
-  color: rgba(255, 255, 255, .66);
+  color: ${({ theme }) => theme.colors._primary.fade(0.34).string()};
   display: inline-block;
 
   * {
@@ -89,12 +108,12 @@ export const UnknownReplyIconWrapper = styled.div`
 `
 
 export const ReplySystemText = styled.span`
-  color: rgba(255, 255, 255, .66);
+  color: ${({ theme }) => theme.colors._primary.fade(0.34).string()};
   font-style: italic;
 `
 
 export const InteractionText = styled.span`
-  color: rgba(255, 255, 255, .66);
+  color: ${({ theme }) => theme.colors._primary.fade(0.34).string()};
 `
 
 export const ReplyImageIcon = styled.svg`
@@ -115,7 +134,7 @@ export const Avatar = styled('div')<AvatarProps>`
   height: 40px;
   width: 40px;
   margin-right: 20px;
-  ${props => props.reply && 'margin-top: 24px;'}
+  margin-top: ${props => props.reply ? 24 : 2}px;
 
   @media (max-width: 400px), (max-height: 370px) {
     height: 35px;
@@ -147,12 +166,21 @@ export namespace Secondary {
     color: ${({ theme }) => theme.colors._primary.fade(0.6).string()};
   `
 
-  export const Pinned = styled(Message)`
-    background-image: url("https://discord.com/assets/5da4cdab01d4d89c593c48c62ae0d937.svg");
+  export const Add = styled(Message)`
+    background-image: url("${add}");
   `
 
-  export const Join = styled(Message)`
-    background-image: url("https://discord.com/assets/e06a573355c490f7ce6e3125ac01db81.svg");
+  export const Remove = styled(Message)`
+    background-image: url("${remove}");
+  `
+
+  export const Changed = styled(Message)`
+    color: ${({ theme }) => theme.colors.primary};
+    background-image: url("${pencil}");
+  `
+
+  export const Pinned = styled(Message)`
+    background-image: url("${pin}");
   `
 
   export const Boost = styled(Message)`
@@ -160,11 +188,11 @@ export namespace Secondary {
   `
 
   export const X = styled(Message)`
-    background-image: url("https://discord.com/assets/c7078943fc392e7dede27a20e6cfdcfb.svg");
+    background-image: url("${x}");
   `
 
   export const Check = styled(Message)`
-    background-image: url("https://discord.com/assets/86b5987e685f72352730d56690393fc8.svg");
+    background-image: url("${check}");
   `
 
   export const Warning = styled(Message)`
@@ -172,9 +200,13 @@ export namespace Secondary {
   `
 
   export const Command = styled(Message)`
-    color: white;
+    color: ${({ theme }) => theme.colors.primary};
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='false' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%238e9297' fill-rule='evenodd' clip-rule='evenodd' d='M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM16.8995 8.41419L15.4853 6.99998L7 15.4853L8.41421 16.8995L16.8995 8.41419Z'%3E%3C/path%3E%3C/svg%3E");
   `
+
+  export const Thread = styled(Message)`
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon-1zIRB4' aria-hidden='false' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}' d='M5.43309 21C5.35842 21 5.30189 20.9325 5.31494 20.859L5.99991 17H2.14274C2.06819 17 2.01168 16.9327 2.02453 16.8593L2.33253 15.0993C2.34258 15.0419 2.39244 15 2.45074 15H6.34991L7.40991 9H3.55274C3.47819 9 3.42168 8.93274 3.43453 8.85931L3.74253 7.09931C3.75258 7.04189 3.80244 7 3.86074 7H7.75991L8.45234 3.09903C8.46251 3.04174 8.51231 3 8.57049 3H10.3267C10.4014 3 10.4579 3.06746 10.4449 3.14097L9.75991 7H15.7599L16.4523 3.09903C16.4625 3.04174 16.5123 3 16.5705 3H18.3267C18.4014 3 18.4579 3.06746 18.4449 3.14097L17.7599 7H21.6171C21.6916 7 21.7481 7.06725 21.7353 7.14069L21.4273 8.90069C21.4172 8.95811 21.3674 9 21.3091 9H17.4099L17.0495 11.04H15.05L15.4104 9H9.41035L8.35035 15H10.5599V17H7.99991L7.30749 20.901C7.29732 20.9583 7.24752 21 7.18934 21H5.43309Z'%3E%3C/path%3E%3Cpath fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}' d='M13.4399 12.96C12.9097 12.96 12.4799 13.3898 12.4799 13.92V20.2213C12.4799 20.7515 12.9097 21.1813 13.4399 21.1813H14.3999C14.5325 21.1813 14.6399 21.2887 14.6399 21.4213V23.4597C14.6399 23.6677 14.8865 23.7773 15.0408 23.6378L17.4858 21.4289C17.6622 21.2695 17.8916 21.1813 18.1294 21.1813H22.5599C23.0901 21.1813 23.5199 20.7515 23.5199 20.2213V13.92C23.5199 13.3898 23.0901 12.96 22.5599 12.96H13.4399Z'%3E%3C/path%3E%3C/svg%3E");  `
 }
 
 export const Command = styled.span`
@@ -183,44 +215,63 @@ export const Command = styled.span`
   opacity: .64;
 `
 
-export const ApplicationIcon = styled.img`
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  vertical-align: text-top;
-`
-
-export const ApplicationName = styled.span`
-  font-weight: 500;
-`
-
 export const CommandArgs = styled.div`
   margin-left: 60px;
   background-color: rgba(0, 0, 0, 9%);
-  color: rgba(255, 255, 255, 70%);
+  color: ${({ theme }) => theme.colors._primary.fade(0.3).string()};
   padding: .5rem;
   border-radius: .25rem;
   margin-top: .25rem;
   display: table;
 `
 
-export const CommandArgsSpine = styled.div`
+const BottomSpine = styled.div`
   position: absolute;
   width: 33px;
-  height: 1.5rem;
-  bottom: 15px;
   left: 40px;
   border-left: 2px solid #4f545c;
   border-bottom: 2px solid #4f545c;
   border-bottom-left-radius: 6px;
+
+  @media (max-width: 500px), (max-height: 370px) {
+    left: 35px;
+  }
+
+  @media (max-width: 260px) {
+    left: 30px;
+  }
+`
+
+export const CommandArgsSpine = styled(BottomSpine)`
+  height: 1.5rem;
+  bottom: 15px;
+
+  @media (max-width: 500px), (max-height: 370px) {
+    bottom: 20px;
+  }
+`
+
+interface ThreadSpineProps {
+  message: Message
+}
+export const ThreadSpine = styled(BottomSpine)<ThreadSpineProps>`
+  top: ${({ message }) => 
+    message.type === MessageType.ThreadCreated ? 2.5
+    : shouldShowContext(message) ? 5.3
+    : 3.8}rem;
+  bottom: ${({ message }) => message.thread.archivedAt || message.thread.messageCount === 0 ? 30 : 19}px;
+
+  @media (max-width: 500px), (max-height: 370px) {
+    bottom: ${({ message }) => message.thread.archivedAt || message.thread.messageCount === 0 ? 35 : 24}px;
+  }
 `
 
 // Username
 interface NameProps {
-  color: number
+  color?: number
 }
 export const Member = styled(MemberLink)<NameProps>`
-  color: ${({ color }) => (color ? '#'+color.toString(16).padStart(6, '0') : null)};
+  color: ${({ theme, color }) => (color ? '#'+color.toString(16).padStart(6, '0') : theme.colors.primary)};
   font-weight: 500;
   /*cursor: pointer;
 
@@ -236,7 +287,7 @@ export const Root = styled('div')`
 
   font-size: 1rem;
   line-height: 1.375rem;
-  margin-top: 4px;
+  padding: 2px 0;
   white-space: pre-wrap;
   word-wrap: break-word;
 
@@ -264,7 +315,6 @@ interface ContentProps {
   sending?: boolean
 }
 export const Content = styled('div')<ContentProps>`
-  margin-bottom: .25rem;
   ${props => props.sending && 'opacity: .5'}
 `
 

@@ -3,13 +3,15 @@ import * as React from 'react'
 import { Burger, Ham } from './elements'
 
 interface Props {
-  onClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler
   open?: boolean
+  thread?: boolean
 }
 
-const Hamburger = ({ onClick, open }: Props) => (
+const Hamburger = ({ onClick, open = false, thread = false }: Props) => (
   <Ham
-    open={open || false}
+    open={open}
+    thread={thread}
     onClick={onClick ? onClick.bind(this) : null}
     className="hamburger"
   >

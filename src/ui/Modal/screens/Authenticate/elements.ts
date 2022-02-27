@@ -73,6 +73,7 @@ export const Input = styled('input')`
   border: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
   font-size: 16px;
+  transition: border-color .2s ease-in-out;
 
   background-color: rgba(0, 0, 0, 0.1);
   color: ${({ theme }) => theme.colors._primary.fade(0.1).string()};

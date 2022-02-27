@@ -1,5 +1,5 @@
-subscription MessageDeleted($channel: String!, $guild: String!) {
-  messageDelete(channel: $channel, guild: $guild) {
+subscription MessageDeleted($channel: String!, $guild: String!, $threadId: String) {
+  messageDelete(channel: $channel, guild: $guild, threadId: $threadId) {
     id
   }
 }

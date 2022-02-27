@@ -4,11 +4,11 @@ import { MessageType } from '@generated/globalTypes';
 /**
  * Compares whether a message should go in a group
  */
-const compareGroupability = (
+export const compareGroupability = (
   a: Message,
   b: Message
 ) => {
-  const nonGroupable = ![MessageType.Default, MessageType.Reply].includes(a.type) || b.type !== MessageType.Default;
+  const nonGroupable = ![MessageType.Default, MessageType.Reply].includes(a.type) || b.type !== MessageType.Default || !!b.thread;
   const differentAuthor = (!(b.flags & 1 << 4) && a.author.id !== b.author.id) || a.author.name !== b.author.name || a.author.bot !== b.author.bot;
   const staleGroup = (Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))) > 5 * 60 * 1000;
 
@@ -33,7 +33,7 @@ export const groupMessages = <
   let previous: Message
 
   for (const message of messages) {
-    if (group === null || compareGroupability(previous, message)) {
+    if (group === null || compareGroupability(previous, message) || previous.thread) {
       group = result.push([] as Group) - 1
     }
     result[group].push(message);

@@ -25,6 +25,7 @@ export const Root = styled('img')`
   max-width: 70vw;
   max-height: 70vh;
   user-select: none;
+  display: block;
 `
 
 export const OpenImage = styled('a')`

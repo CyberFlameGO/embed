@@ -1,1 +1,1 @@
-export * from './MessagesView'
+export { default as MessagesView } from './MessagesView'

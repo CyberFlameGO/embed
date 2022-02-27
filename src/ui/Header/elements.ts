@@ -1,5 +1,5 @@
 import Button from '@ui/shared/button'
-import {Hash, NSFW, News, NSFWNews, Rules} from '@ui/shared/Channel'
+import { Hash, NSFW, News, NSFWNews, Rules, ThreadHash } from '@ui/shared/Channel'
 import Markdown from '@ui/shared/markdown/render'
 import styled from '@lib/emotion'
 import { Twemoji } from '@ui/shared/Emoji/emoji'
@@ -26,7 +26,7 @@ export const Inner = styled('div')`
   display: flex;
   flex-shrink: 1;
   flex-grow: 1;
-  max-width: 100%;
+  min-width: 0;
   height: 47px;
   padding: 10px 0;
   @media (max-width: 270px), (max-height: 300px) {
@@ -71,6 +71,8 @@ const name = (hash: typeof Hash) => styled(hash)`
 `
 
 export const Name = name(Hash)
+
+export const ThreadName = name(ThreadHash)
 
 export const NewsName = name(News)
 
@@ -125,9 +127,18 @@ export const Join = styled(JoinLink)`
 `;
 
 export const SingleChannelAuthWrapper = styled('div')`
-  ${({theme}) => !!theme.singleChannel ? null : 'display: none'};
+  ${({theme}) => theme.singleChannel ? null : 'display: none'};
   margin-right: 10px;
   > a {
     display: block;
   }
 `
+
+export const Fullscreen = styled('svg')`
+  margin-right: 1rem;
+  cursor: pointer;
+  
+  path {
+    color: ${({theme}) => theme.colors._primary.fade(0.6).string()};
+  }
+`;

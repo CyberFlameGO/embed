@@ -15,6 +15,7 @@
         "kind": "OBJECT",
         "name": "BulkDeletedMessages",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "ids",
@@ -50,6 +51,7 @@
         "kind": "SCALAR",
         "name": "String",
         "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -60,6 +62,7 @@
         "kind": "OBJECT",
         "name": "DeletedMessage",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -87,6 +90,7 @@
         "kind": "OBJECT",
         "name": "Mutation",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "sendMessage",
@@ -104,7 +108,57 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "threadId",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "fileAlt",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "fileName",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "fileData",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "content",
@@ -118,7 +172,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -143,6 +199,7 @@
         "kind": "OBJECT",
         "name": "Subscription",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "message",
@@ -160,7 +217,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "guild",
@@ -174,7 +233,21 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "threadId",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -201,7 +274,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "guild",
@@ -215,7 +290,21 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "threadId",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -242,7 +331,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "guild",
@@ -256,7 +347,21 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "threadId",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -283,7 +388,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "guild",
@@ -297,7 +404,21 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "threadId",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -318,6 +439,7 @@
         "kind": "OBJECT",
         "name": "UpdatedMessage",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -554,6 +676,30 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "thread",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Thread",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isGuest",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -565,6 +711,18 @@
         "kind": "SCALAR",
         "name": "Int",
         "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -575,6 +733,7 @@
         "kind": "OBJECT",
         "name": "AnnouncementChannel",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -740,7 +899,21 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": "30"
+                "defaultValue": "30",
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "id",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "around",
@@ -750,7 +923,9 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "before",
@@ -760,7 +935,9 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "after",
@@ -770,7 +947,9 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -806,19 +985,10 @@
         "possibleTypes": null
       },
       {
-        "kind": "SCALAR",
-        "name": "Boolean",
-        "description": "The `Boolean` scalar type represents `true` or `false`.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
         "name": "Application",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -878,6 +1048,7 @@
         "kind": "OBJECT",
         "name": "Attachment",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "url",
@@ -961,6 +1132,7 @@
         "kind": "OBJECT",
         "name": "Author",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -1072,6 +1244,7 @@
         "kind": "OBJECT",
         "name": "Category",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -1131,6 +1304,7 @@
         "kind": "INTERFACE",
         "name": "Channel",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -1245,10 +1419,29 @@
         "kind": "ENUM",
         "name": "ChannelType",
         "description": null,
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
+          {
+            "name": "GuildText",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "Unknown",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DM",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "GroupDm",
             "description": null,
@@ -1256,7 +1449,7 @@
             "deprecationReason": null
           },
           {
-            "name": "DM",
+            "name": "GuildCategory",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -1278,24 +1471,6 @@
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "GuildText",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "GuildCategory",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "Unknown",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "possibleTypes": null
@@ -1304,6 +1479,7 @@
         "kind": "OBJECT",
         "name": "Embed",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "title",
@@ -1479,6 +1655,7 @@
         "kind": "OBJECT",
         "name": "EmbedAuthor",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "name",
@@ -1526,6 +1703,7 @@
         "kind": "OBJECT",
         "name": "EmbedField",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "value",
@@ -1581,6 +1759,7 @@
         "kind": "OBJECT",
         "name": "EmbedFooter",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "url",
@@ -1620,6 +1799,7 @@
         "kind": "OBJECT",
         "name": "EmbedImage",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "height",
@@ -1667,6 +1847,7 @@
         "kind": "OBJECT",
         "name": "EmbedProvider",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "name",
@@ -1702,6 +1883,7 @@
         "kind": "OBJECT",
         "name": "EmbedThumbnail",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "height",
@@ -1749,6 +1931,7 @@
         "kind": "OBJECT",
         "name": "EmbedVideo",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "height",
@@ -1808,6 +1991,7 @@
         "kind": "ENUM",
         "name": "FormatType",
         "description": null,
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -1843,6 +2027,7 @@
         "kind": "OBJECT",
         "name": "Guild",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -2094,6 +2279,7 @@
         "kind": "OBJECT",
         "name": "GuildSettings",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "readonly",
@@ -2186,6 +2372,18 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "hideSidebar",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -2197,6 +2395,7 @@
         "kind": "OBJECT",
         "name": "Mention",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "type",
@@ -2256,6 +2455,7 @@
         "kind": "ENUM",
         "name": "MentionType",
         "description": null,
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -2285,6 +2485,7 @@
         "kind": "OBJECT",
         "name": "Message",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -2555,6 +2756,18 @@
             "deprecationReason": null
           },
           {
+            "name": "thread",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Thread",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "isGuest",
             "description": null,
             "args": [],
@@ -2580,6 +2793,7 @@
         "kind": "OBJECT",
         "name": "MessageInteraction",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -2639,6 +2853,7 @@
         "kind": "OBJECT",
         "name": "MessageReference",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "messageId",
@@ -2690,30 +2905,13 @@
         "kind": "ENUM",
         "name": "MessageType",
         "description": null,
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
-            "name": "GuildDiscoveryGracePeriodInitialWarning",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "GuildDiscoveryDisqualified",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ChannelIconChange",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "GuildInviteReminder",
+            "name": "UserPremiumGuildSubscription",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -2725,13 +2923,19 @@
             "deprecationReason": null
           },
           {
-            "name": "GuildMemberJoin",
+            "name": "ChannelNameChange",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "ChannelFollowAdd",
+            "name": "ChatInputCommand",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GuildDiscoveryGracePeriodFinalWarning",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -2743,19 +2947,7 @@
             "deprecationReason": null
           },
           {
-            "name": "Call",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "UserPremiumGuildTier3",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "Unknown",
+            "name": "GuildInviteReminder",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -2767,25 +2959,55 @@
             "deprecationReason": null
           },
           {
-            "name": "ApplicationCommand",
+            "name": "ChannelIconChange",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "Unknown",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ThreadCreated",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GuildDiscoveryGracePeriodInitialWarning",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "Call",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GuildMemberJoin",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GuildDiscoveryRequalified",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ChannelFollowAdd",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "UserPremiumGuildTier2",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ChannelNameChange",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "GuildDiscoveryGracePeriodFinalWarning",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -2803,19 +3025,7 @@
             "deprecationReason": null
           },
           {
-            "name": "UserPremiumGuildSubscription",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "Default",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "GuildDiscoveryRequalified",
+            "name": "ChannelPinnedMessage",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -2827,7 +3037,19 @@
             "deprecationReason": null
           },
           {
-            "name": "ChannelPinnedMessage",
+            "name": "Default",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UserPremiumGuildTier3",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GuildDiscoveryDisqualified",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -2839,6 +3061,7 @@
         "kind": "OBJECT",
         "name": "Query",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "hello",
@@ -2872,7 +3095,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -2967,7 +3192,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -2998,7 +3225,9 @@
                     "ofType": null
                   }
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -3023,6 +3252,7 @@
         "kind": "OBJECT",
         "name": "Reaction",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "count",
@@ -3102,6 +3332,7 @@
         "kind": "OBJECT",
         "name": "Role",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -3161,6 +3392,7 @@
         "kind": "OBJECT",
         "name": "Statistics",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "serverCount",
@@ -3236,6 +3468,7 @@
         "kind": "OBJECT",
         "name": "Sticker",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -3323,6 +3556,7 @@
         "kind": "OBJECT",
         "name": "TextChannel",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -3488,7 +3722,21 @@
                   "name": "Int",
                   "ofType": null
                 },
-                "defaultValue": "30"
+                "defaultValue": "30",
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "id",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "around",
@@ -3498,7 +3746,9 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "before",
@@ -3508,7 +3758,9 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               },
               {
                 "name": "after",
@@ -3518,7 +3770,9 @@
                   "name": "String",
                   "ofType": null
                 },
-                "defaultValue": null
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -3557,6 +3811,7 @@
         "kind": "OBJECT",
         "name": "ThemeColorSettings",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "primary",
@@ -3604,6 +3859,7 @@
         "kind": "OBJECT",
         "name": "ThemeSettings",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "css",
@@ -3641,8 +3897,97 @@
       },
       {
         "kind": "OBJECT",
+        "name": "Thread",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "archivedAt",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Long",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "locked",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "messageCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
         "name": "User",
         "description": null,
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "id",
@@ -3778,6 +4123,7 @@
         "kind": "SCALAR",
         "name": "Long",
         "description": "The `Long` scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1.",
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -3788,6 +4134,7 @@
         "kind": "OBJECT",
         "name": "__Schema",
         "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "description",
@@ -3899,6 +4246,7 @@
         "kind": "OBJECT",
         "name": "__Type",
         "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "kind",
@@ -3964,7 +4312,9 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false"
+                "defaultValue": "false",
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -4035,7 +4385,9 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false"
+                "defaultValue": "false",
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -4066,7 +4418,9 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false"
+                "defaultValue": "false",
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -4107,6 +4461,7 @@
         "kind": "ENUM",
         "name": "__TypeKind",
         "description": "An enum describing what kind of type a given `__Type` is.",
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -4166,6 +4521,7 @@
         "kind": "OBJECT",
         "name": "__Field",
         "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "name",
@@ -4207,7 +4563,9 @@
                   "name": "Boolean",
                   "ofType": null
                 },
-                "defaultValue": "false"
+                "defaultValue": "false",
+                "isDeprecated": false,
+                "deprecationReason": null
               }
             ],
             "type": {
@@ -4284,6 +4642,7 @@
         "kind": "OBJECT",
         "name": "__InputValue",
         "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "name",
@@ -4379,6 +4738,7 @@
         "kind": "OBJECT",
         "name": "__EnumValue",
         "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "name",
@@ -4446,6 +4806,7 @@
         "kind": "OBJECT",
         "name": "__Directive",
         "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+        "specifiedByUrl": null,
         "fields": [
           {
             "name": "name",
@@ -4518,7 +4879,20 @@
           {
             "name": "args",
             "description": null,
-            "args": [],
+            "args": [
+              {
+                "name": "includeDeprecated",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": "false",
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4549,6 +4923,7 @@
         "kind": "ENUM",
         "name": "__DirectiveLocation",
         "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+        "specifiedByUrl": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -4694,7 +5069,9 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ]
       },
@@ -4720,7 +5097,9 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ]
       },
@@ -4743,7 +5122,9 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": "\"No longer supported\""
+            "defaultValue": "\"No longer supported\"",
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ]
       },
@@ -4767,7 +5148,9 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ]
       },
@@ -4789,7 +5172,9 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ]
       },
@@ -4813,7 +5198,9 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ]
       },
@@ -4837,7 +5224,9 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           },
           {
             "name": "filter",
@@ -4855,7 +5244,9 @@
                 }
               }
             },
-            "defaultValue": null
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ]
       }

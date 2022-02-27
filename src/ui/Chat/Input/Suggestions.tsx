@@ -68,7 +68,7 @@ class EmojiSuggestions extends React.Component<Props> {
     const { query, handler } = this.props
 
     return suggestions.length ? (
-      <Suggestions length={suggestions.length}>
+      <Suggestions length={suggestions.length} className="suggestions">
         {handler.description(query)}
 
         {suggestions.map((suggestion, index) => (
@@ -83,6 +83,7 @@ class EmojiSuggestions extends React.Component<Props> {
               this.mouseEvent = true
             }}
             children={handler.suggestion(suggestion)}
+            className="suggestion"
           />
         ))}
       </Suggestions>

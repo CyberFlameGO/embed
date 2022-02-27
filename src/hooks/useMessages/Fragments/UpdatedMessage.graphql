@@ -93,12 +93,6 @@ fragment UpdatedMessage on UpdatedMessage {
         }
     }
 
-    application {
-        id
-        name
-        icon
-    }
-
     embeds {
         ...Embed
     }
@@ -117,5 +111,13 @@ fragment UpdatedMessage on UpdatedMessage {
             discriminator
             avatarUrl
         }
+    }
+
+    thread {
+        id
+        name
+        archivedAt
+        locked
+        messageCount
     }
 }

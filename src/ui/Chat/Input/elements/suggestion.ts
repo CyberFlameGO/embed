@@ -8,9 +8,9 @@ interface Props {
 export const Suggestion = styled('li')<Props>`
   display: flex;
   cursor: pointer;
-  height: 32px;
+  align-items: center;
   margin: 0 8px;
-  font-size: 14px;
+  font-weight: 500;
   line-height: 16px;
   border-radius: 3px;
   padding: 8px;
@@ -27,12 +27,18 @@ export const Icon = styled(Twemoji)`
   height: 16px;
   text-align: center;
   flex-shrink: 0;
+
+  * {
+    color: ${({ theme }) => theme.colors._primary.fade(0.34).string()};
+  }
 `
 
 export const Name = styled('div')`
   margin-left: 10px;
   flex-grow: 1;
   flex-shrink: 0;
+  font-size: 16px;
+  line-height: 20px;
 `
 
 export const Info = styled('div')`
@@ -40,7 +46,8 @@ export const Info = styled('div')`
   margin-left: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: ${({ theme }) => theme.colors._primary.fade(0.75).string()};
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors._primary.fade(0.34).string()};
   text-transform: lowercase;
   &:first-letter {
     text-transform: uppercase;

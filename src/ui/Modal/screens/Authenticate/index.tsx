@@ -57,12 +57,12 @@ class Authenticate extends React.Component<{}, State> {
   render() {
     const { awaiting } = this.state;
     return !generalStore.menuOpen ? null : (generalStore.settings?.guestMode ? (
-        <Overlay>
-          <Root loading={awaiting}>
-            <Close onClick={() => generalStore.toggleMenu(false)} />
-            <Title>{Locale.translate('frontend.auth.welcome')}</Title>
-            <Greeting>{Locale.translate('frontend.auth.pickname')}</Greeting>
-            <Group label={Locale.translate('frontend.auth.name')} onSubmit={this.signUp.bind(this)}>
+        <Overlay className="modal-overlay">
+          <Root loading={awaiting} className={`login-modal${awaiting ? ' inactive' : ''}`}>
+            <Close onClick={() => generalStore.toggleMenu(false)} className="close-button" />
+            <Title className="title">{Locale.translate('frontend.auth.welcome')}</Title>
+            <Greeting className="greeting">{Locale.translate('frontend.auth.pickname')}</Greeting>
+            <Group label={Locale.translate('frontend.auth.name')} onSubmit={this.signUp.bind(this)} className="group">
               <Input
                   innerRef={ref => (this.nameField = ref)}
                   autoFocus={true}
@@ -70,11 +70,12 @@ class Authenticate extends React.Component<{}, State> {
                   minLength={1}
                   maxLength={80}
                   required
+                  className="input"
               />
-              <Create variant="large">Continue</Create>
-              <SSO>
-              {Locale.translate('frontend.auth.discordacc')}
-                <Discord onClick={this.discordSignOn.bind(this)}>
+              <Create variant="large" className="login-button">Continue</Create>
+              <SSO className="sso">
+                {Locale.translate('frontend.auth.discordacc')}
+                <Discord onClick={this.discordSignOn.bind(this)} className="discord-button">
                   {Locale.translate('frontend.auth.login2')}
                 </Discord>
               </SSO>

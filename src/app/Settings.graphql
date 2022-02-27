@@ -3,6 +3,7 @@ query Settings($guild: String!) {
     guestMode
     invite
     singleChannel
+    hideSidebar
     readonly
     theme {
       css

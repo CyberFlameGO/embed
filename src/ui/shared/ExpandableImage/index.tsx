@@ -32,7 +32,7 @@ const ExpandableImage = (props: Props) => {
     <Root
       className={className || null}
       scale={scale}
-      // onClick={() => store.modal.openImage(url)}
+      onClick={() => store.modal.openImage(url)}
     >
       <Image
         src={optimize({

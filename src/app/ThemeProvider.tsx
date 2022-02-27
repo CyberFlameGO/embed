@@ -11,10 +11,7 @@ import { useQuery } from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
 import {generalStore, authStore} from '@store';
 
-const getQueryParam = (query: string) => {
-	const matched = window.location.search.match(new RegExp(`[?&]${query}=([^&#]*)`))
-	return matched?.[1];
-};
+const queryParams = new URLSearchParams(location.search)
 
 export const ThemeProvider = ({ children }) => {
   let guild;
@@ -41,8 +38,8 @@ export const ThemeProvider = ({ children }) => {
 
   generalStore.setSettings(settings)
   
-  if (getQueryParam('username')) {
-    const name = decodeURIComponent(getQueryParam('username'))
+  if (queryParams.has('username')) {
+    const name = decodeURIComponent(queryParams.get('username'))
     if (name !== authStore.user?.username)
       authStore.guestLogin(name).then(async () => {
         await authStore.setGuestUser(name);
@@ -54,7 +51,7 @@ export const ThemeProvider = ({ children }) => {
     ...theme,
     readonly: settings?.readonly || false,
     guestMode: settings?.guestMode || false,
-    singleChannel: settings?.singleChannel || '',
+    singleChannel: !!settings?.singleChannel || settings?.hideSidebar || false,
     colors: {
       ...theme.colors,
       _primary: Color(theme.colors.primary),
@@ -62,8 +59,8 @@ export const ThemeProvider = ({ children }) => {
       _accent: Color(theme.colors.accent)
     },
     url: {
-      preset: getQueryParam('preset') as 'crate' | null,
-      api: getQueryParam('api')
+      preset: queryParams.get('preset') as 'crate' | null,
+      api: queryParams.get('api')
     }
   };
   // TODO: I found why the URL parsing doesn't work l m a o.

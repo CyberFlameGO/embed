@@ -21,12 +21,12 @@ export enum MentionType {
 }
 
 export enum MessageType {
-  ApplicationCommand = "ApplicationCommand",
   Call = "Call",
   ChannelFollowAdd = "ChannelFollowAdd",
   ChannelIconChange = "ChannelIconChange",
   ChannelNameChange = "ChannelNameChange",
   ChannelPinnedMessage = "ChannelPinnedMessage",
+  ChatInputCommand = "ChatInputCommand",
   ContextMenuCommand = "ContextMenuCommand",
   Default = "Default",
   GuildDiscoveryDisqualified = "GuildDiscoveryDisqualified",
@@ -38,6 +38,7 @@ export enum MessageType {
   RecipientAdd = "RecipientAdd",
   RecipientRemove = "RecipientRemove",
   Reply = "Reply",
+  ThreadCreated = "ThreadCreated",
   ThreadStarterMessage = "ThreadStarterMessage",
   Unknown = "Unknown",
   UserPremiumGuildSubscription = "UserPremiumGuildSubscription",

@@ -27,7 +27,7 @@ interface FieldProps {
 }
 export const Field = styled('div')<FieldProps>`
   display: flex;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors._primary.fade(0.95).string()};
   height: ${({ rows, canSend }) => canSend ? (rows > 7 ? 7 : rows) * 20 + 22 + 'px' : 'auto'};
 

@@ -1,7 +1,7 @@
 #import "../useMessages/Fragments/Message.graphql"
 
-mutation SendMessage($channel: String!, $content: String!) {
-  sendMessage(channel: $channel, content: $content) {
+mutation SendMessage($channel: String!, $content: String!, $thread: String, $fileData: String, $fileName: String, $fileAlt: String) {
+  sendMessage(channel: $channel, content: $content, threadId: $thread, fileData: $fileData, fileName: $fileName, fileAlt: $fileAlt) {
     ...Message
   }
 }

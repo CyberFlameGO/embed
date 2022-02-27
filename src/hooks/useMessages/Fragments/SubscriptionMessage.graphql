@@ -94,12 +94,6 @@ fragment SubscriptionMessage on Message {
         }
     }
 
-    application {
-        id
-        name
-        icon
-    }
-
     embeds {
         ...Embed
     }
@@ -118,5 +112,13 @@ fragment SubscriptionMessage on Message {
             discriminator
             avatarUrl
         }
+    }
+
+    thread {
+        id
+        name
+        archivedAt
+        locked
+        messageCount
     }
 }

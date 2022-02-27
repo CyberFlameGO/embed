@@ -24,7 +24,7 @@ class Channel extends React.PureComponent<Props> {
                 {(() => {
                     if (this.props.id === generalStore.guild?.rulesChannelId) return <Rulestag className="rules" />
                     switch(this.props.__typename) {
-                        case 'NewsChannel': {
+                        case 'AnnouncementChannel': {
                             return this.props.nsfw ? <NSFWNewstag className="nsfwnews" /> : <Newstag className="news" />;
                         }
                         case 'StoreChannel': {

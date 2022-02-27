@@ -3,8 +3,8 @@ import styled from '@lib/emotion'
 // Root
 export const Root = styled('span')`
   display: flex;
-  height: 24px;
-  line-height: 24px;
+  height: 22px;
+  line-height: 22px;
   overflow: hidden;
 `
 

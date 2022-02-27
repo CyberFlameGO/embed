@@ -21,7 +21,7 @@ const Mentions: Suggestion<any /*Member*/> = {
   toString: ({ tag }) => `@${tag}`,
 
   description: query => (
-    <Description>
+    <Description className="description">
       Members
       {query ? (
         <React.Fragment>
@@ -35,8 +35,8 @@ const Mentions: Suggestion<any /*Member*/> = {
   suggestion: ({ name, tag, avatarURL }) => (
     <React.Fragment>
       <Icon src={avatarURL} />
-      <Name>{name}</Name>
-      <Info>{tag}</Info>
+      <Name className="name">{name}</Name>
+      <Info className="info">{tag}</Info>
     </React.Fragment>
   )
 }

@@ -15,7 +15,7 @@ const Emojis: Suggestion<Emoji> = {
   toString: ({ keywords: [keyword] }) => `:${keyword}:`,
 
   description: query => (
-    <Description>
+    <Description className="description">
       Emoji
       {query ? (
         <React.Fragment>
@@ -33,8 +33,8 @@ const Emojis: Suggestion<Emoji> = {
       ) : (
         <Icon>{emoji}</Icon>
       )}
-      <Name>{`:${keyword}:`}</Name>
-      <Info>{category}</Info>
+      <Name className="name">{`:${keyword}:`}</Name>
+      <Info className="info">{category}</Info>
     </React.Fragment>
   )
 }

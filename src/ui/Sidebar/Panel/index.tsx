@@ -13,6 +13,8 @@ const { version } = require('../../../../package.json');
 
 console.log(`WidgetBot version: ${version}`)
 
+const queryParams = new URLSearchParams(location.search)
+
 @observer
 export default class Panel extends React.Component<{}> {
 	onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
@@ -31,15 +33,15 @@ export default class Panel extends React.Component<{}> {
 		return (
 			<Root className="panel">
 				<Developers>
-					<Auth
-						className="auth"
-						target="_blank"
-						onClick={this.onClick.bind(this)}
-					>
-						<React.Fragment>
-							{authStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}
-						</React.Fragment>
-					</Auth>
+					{queryParams.has('username') ||
+						<Auth
+							className="auth"
+							target="_blank"
+							onClick={this.onClick.bind(this)}
+						>
+							{Locale.translate(`frontend.auth.${authStore.user ? 'logout' : 'login'}`)}
+						</Auth>
+					}
 				</Developers>
 				<Version
 					href={`https://widgetbot.io`}
@@ -76,17 +78,17 @@ export class SingleChannelAuth extends React.Component<{}> {
 	};
 
 	render(): React.ReactNode {
+		if (queryParams.has('username')) return null
+
 		return (
-			<Tooltip placement="bottom" overlay={authStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}>
+			<Tooltip placement="bottom" overlay={Locale.translate(`frontend.auth.${authStore.user ? 'logout' : 'login'}`)}>
 				<Auth
 					className="auth"
 					target="_blank"
 					onClick={this.onClick.bind(this)}
 					style={{padding: '2px 0', minWidth: '28px'}}
 				>
-					<React.Fragment>
-						{authStore.user ? <FiLogOut /> : <FiLogIn />}
-					</React.Fragment>
+					{authStore.user ? <FiLogOut /> : <FiLogIn />}
 				</Auth>
 			</Tooltip>
 		)

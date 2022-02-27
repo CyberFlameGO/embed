@@ -7,8 +7,8 @@ import { Suspense, lazy } from 'react'
 
 import { Loading } from '@ui/Overlays'
 
-import icon from './app/res/images/cookies/icon.svg'
-import screenshot from './app/res/images/cookies/screenshot.png'
+import icon from '@images/cookies/icon.svg'
+import screenshot from '@images/cookies/screenshot.png'
 
 if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname.includes(`localhost`))
     Sentry.init({dsn: 'https://dc53893051504a7f9f94b1c207364f5f@o328116.ingest.sentry.io/1840509'});

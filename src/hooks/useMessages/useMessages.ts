@@ -6,9 +6,9 @@ import { MessageDeleted, MessagesBulkDeleted, Messages_channel, Message, Message
 /**
  * Fetches the messages for a channel
  */
-export const useMessages = (channel: string, guild: string) => {
+export const useMessages = (channel: string, guild: string, thread?: string) => {
   const query = useQuery(MESSAGES, {
-    variables: { channel },
+    variables: { channel, thread },
     fetchPolicy: 'network-only'
   });
 
@@ -36,7 +36,7 @@ export const useMessages = (channel: string, guild: string) => {
 
     await query.fetchMore({
       query: MESSAGES,
-      variables: { channel, ...options },
+      variables: { channel, thread, ...options },
       updateQuery: (prev, { fetchMoreResult }) =>
         produce(prev, draftState => {
           draftState.channel.messages = [
@@ -48,7 +48,7 @@ export const useMessages = (channel: string, guild: string) => {
   }
 
   useSubscription<NewMessage>(NEW_MESSAGE, {
-    variables: { channel, guild },
+    variables: { channel, guild, threadId: thread },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }: { channel: Messages_channel }) => {
@@ -60,7 +60,7 @@ export const useMessages = (channel: string, guild: string) => {
   });
 
   useSubscription<MessageUpdated>(MESSAGE_UPDATED, {
-    variables: { channel, guild },
+    variables: { channel, guild, threadId: thread },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }: { channel: Messages_channel }) => {
@@ -69,7 +69,7 @@ export const useMessages = (channel: string, guild: string) => {
 
           if (index > -1) {
             const updatedProps = Object.fromEntries(Object.entries(message).filter(([_, v]) => v !== null)) as Partial<Message>
-            updatedProps.author.color = messages.find(m => m.author.id === message.author?.id)?.author.color || 0xffffff
+            if (updatedProps.author) updatedProps.author.color = messages.find(m => m.author.id === message.author?.id)?.author.color || 0xffffff
             delete updatedProps.__typename
 
             Object.assign(messages[index], updatedProps)
@@ -80,7 +80,7 @@ export const useMessages = (channel: string, guild: string) => {
   });
 
   useSubscription<MessageDeleted>(MESSAGE_DELETED, {
-    variables: { channel, guild },
+    variables: { channel, guild, threadId: thread },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }: { channel: Messages_channel }) => {
@@ -94,7 +94,7 @@ export const useMessages = (channel: string, guild: string) => {
   });
 
   useSubscription<MessagesBulkDeleted>(MESSAGES_BULK_DELETED, {
-    variables: { channel, guild },
+    variables: { channel, guild, threadId: thread },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel }: { channel: Messages_channel }) => {

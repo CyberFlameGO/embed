@@ -5,6 +5,8 @@ export const Modal = types
     type: types.maybeNull(types.string),
     data: types.maybeNull(types.string),
     channel: types.maybeNull(types.string),
+    thread: false,
+    content: types.maybeNull(types.string),
     isOpen: false
   })
   .actions(self => ({
@@ -23,6 +25,13 @@ export const Modal = types
       self.type = 'topic'
       self.data = topic
       self.channel = channel
+    },
+    openUpload(channel, thread, content) {
+      self.isOpen = true
+      self.type = 'upload'
+      self.channel = channel
+      self.thread = thread
+      self.content = content
     },
     close() {
       self.isOpen = false

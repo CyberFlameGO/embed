@@ -6,15 +6,16 @@ interface Props {
 }
 
 export const Description = styled('div')`
-  padding: 5px 17px;
+  padding: 12px 8px;
   font-size: 12px;
   text-transform: uppercase;
   line-height: 16px;
-  color: ${({ theme }) => theme.colors._primary.fade(0.5).string()};
+  color: ${({ theme }) => theme.colors._primary.fade(0.34).string()};
+  font-weight: 600;
+  user-select: none;
 
   strong {
     text-transform: none;
-    font-weight: 500;
     color: ${({ theme }) => theme.colors.primary};
   }
 `
@@ -22,30 +23,24 @@ export const Description = styled('div')`
 export const Suggestions = styled(ScrollOverlay)<Props>`
   position: absolute !important;
   left: 0;
-  border-radius: 5px 5px 0 0;
+  border-radius: ${({ theme }) => theme.url.preset === 'crate' ? '5px 5px 0 0' : '5px'};
   padding: 8px 0;
-  background-color: ${({ theme }) =>
-    theme.colors._background.darken(0.05).string()};
-  bottom: ${({ theme }) =>
-    theme.url.preset === 'crate' ? `100%` : `calc(100% - 5px)`};
+  background-color: ${({ theme }) => theme.colors._background.darken(0.15).string()};
+  bottom: ${({ theme }) => theme.url.preset === 'crate' ? '100%' : 'calc(100% + 8px)'};
+  ${({ theme }) => theme.url.preset === 'crate' ? '' : 'box-shadow: 0 0 0 1px rgba(4,4,5,0.15), 0 8px 16px rgba(0,0,0,0.24);'}
 
-  height: ${({ length }) =>
-    (length > 9 ? 300 : length * 32) + 8 * 2 + 26}px !important;
+  height: ${({ length }) => (length > 8 ? 300 : length * 36) + 8 * 2 + 34}px !important;
   max-height: calc(100vh - 130px);
 
   & > div:nth-child(1) {
-    padding: 8px 0;
+    padding: 0 8px 8px 0;
   }
 `
 
 export const NoPerms = styled(`p`)`
-    opacity: 0.4;
-    margin: 10px;
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-    -khtml-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none;
-    cursor: pointer;
+  opacity: 0.4;
+  margin: 10px;
+  -webkit-touch-callout: none; 
+  user-select: none;
+  cursor: pointer;
 `;

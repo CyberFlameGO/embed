@@ -10,7 +10,7 @@ export const WS_URL      = `${socketScheme}${url}/api/graphql`
 **/
 function getEnvVar(envVarStr: string): string {
     const overrides = {
-        CUSTOM_SERVER_ENDPOINT: "s-e.widgetbot.io"
+        CUSTOM_SERVER_ENDPOINT: "s-staging.widgetbot.io"
     }
 
     // is true when running: npm run build

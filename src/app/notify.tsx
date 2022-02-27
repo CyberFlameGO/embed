@@ -31,7 +31,7 @@ class Notify extends React.PureComponent {
 
   render() {
     return (
-      <Notifications>
+      <Notifications className="notifications">
         <N ref={ref => (this.notifications = ref)} />
       </Notifications>
     )

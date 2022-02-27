@@ -8,13 +8,13 @@ import { MessageType } from '@generated/globalTypes';
 import { Util } from '@lib/Util';
 import { authStore } from '@store';
 
-export const useSendMessage = () => {
+export const useSendMessage = (thread?: string) => {
   const { channel } = useRouter()
   const sendMessage = useMutation<SendMessage>(SEND_MESSAGE);
 
-  return async (content: string) =>
+  return async (content: string, fileName?: string, fileData?: string, fileAlt?: string) =>
     await sendMessage({
-      variables: { channel, content },
+      variables: { channel, content, fileName, fileData, fileAlt, thread },
       optimisticResponse: {
         __typename: 'Mutation',
         sendMessage: {
@@ -28,7 +28,7 @@ export const useSendMessage = () => {
           isGuest: true,
           author: {
             __typename: 'User',
-            avatarUrl: 'avatar' in authStore.user && Util.craftAvatarUrl(authStore.user._id, authStore.user.avatar),
+            avatarUrl: 'avatarUrl' in authStore.user && authStore.user.avatarUrl || 'avatar' in authStore.user && Util.craftAvatarUrl(authStore.user._id, authStore.user.avatar),
             bot: true,
             color: 0,
             discrim: '0000',
@@ -41,13 +41,13 @@ export const useSendMessage = () => {
           stickers: [],
           messageReference: null,
           referencedMessage: null,
-          application: null,
           embeds: [],
           mentions: [],
-          interaction: null
+          interaction: null,
+          thread: null,
         }
       } as SendMessage, update: (store, { data: { sendMessage: newMessage } }) => {
-        const data = store.readQuery<Messages>({ query: MESSAGES, variables: {channel} })
+        const data = store.readQuery<Messages>({ query: MESSAGES, variables: {channel, thread } })
 
         newMessage.isGuest = true
 
@@ -59,8 +59,8 @@ export const useSendMessage = () => {
           const optimisticIndex = data.channel.messages.findIndex(m => m.content.replace(/ /g, '') === newMessage.content.replace(/ /g, '') && m.flags & 1 << 4)
           if (optimisticIndex > -1) data.channel.messages.splice(optimisticIndex, 1)
         }
-        
-        store.writeQuery({query: MESSAGES, variables: {channel}, data})
+
+        store.writeQuery({query: MESSAGES, variables: {channel, thread}, data})
       }
     }).catch(error => addNotification({
       level: 'error',

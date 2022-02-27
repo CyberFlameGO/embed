@@ -22,7 +22,7 @@ const Channels: Suggestion<any /*Channel*/> = {
   toString: ({ name }) => `#${name}`,
 
   description: query => (
-    <Description>
+    <Description className="description">
       Text Channels
       {query ? (
         <React.Fragment>
@@ -39,8 +39,8 @@ const Channels: Suggestion<any /*Channel*/> = {
       <Icon>
         <Hash />
       </Icon>
-      <Name>{name}</Name>
-      <Info>{category}</Info>
+      <Name className="name">{name}</Name>
+      <Info className="info">{category}</Info>
     </React.Fragment>
   )
 }

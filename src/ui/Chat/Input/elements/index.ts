@@ -1,13 +1,29 @@
 import styled from '@lib/emotion'
 
 export const Root = styled('div')`
+  display: flex;
   width: 100%;
+`
+
+export const UploadButton = styled.label`
+  padding: 10px 16px;
+  cursor: pointer;
+
+  path {
+    color: ${({ theme }) => theme.colors._primary.fade(0.4).string()} !important;
+  }
+
+  &:hover {
+    path {
+      color: ${({ theme }) => theme.colors._primary.fade(0.2).string()} !important;
+    }
+  }
 `
 
 export const Textarea = styled('textarea')`
   width: 100%;
   height: 100%;
-  padding: 10px 16px;
+  padding: 10px 16px 10px 0;
   background-color: transparent;
   border: none;
   resize: none;

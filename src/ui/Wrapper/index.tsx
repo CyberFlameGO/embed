@@ -2,7 +2,7 @@ import { Wrapper as Root } from './elements'
 import { observer } from 'mobx-react'
 import { store } from '@models'
 
-const Wrapper = observer(({ children }) => (
+const Wrapper = observer(({ children, hideOnMobile = false, threadFullscreen = true }) => (
   <Root
     onClick={() => {
       if (store.sidebar.isOpen && window.innerWidth < 520) {
@@ -10,6 +10,8 @@ const Wrapper = observer(({ children }) => (
       }
     }}
     squashed={store.sidebar.isOpen}
+    hideOnMobile={hideOnMobile}
+    threadFullscreen={threadFullscreen}
     className="wrapper"
   >
     {children}

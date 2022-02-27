@@ -25,6 +25,7 @@ export interface Settings_settings {
   guestMode: boolean;
   invite: string | null;
   singleChannel: string | null;
+  hideSidebar: boolean | null;
   readonly: boolean;
   theme: Settings_settings_theme | null;
 }

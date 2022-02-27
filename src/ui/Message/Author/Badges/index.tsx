@@ -27,11 +27,12 @@ export const Tag = styled('span')`
   margin-top: 4px;
   margin-bottom: 4px;
   text-transform: uppercase;
+  height: 15px;
+  line-height: 13.5px;
 
   @media (max-width: 340px), (max-height: 370px) {
     margin-top: 5px;
     margin-bottom: 5px;
-    line-height: 13px;
   }
 `
 
