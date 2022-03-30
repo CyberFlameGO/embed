@@ -1,4 +1,4 @@
-# [WidgetBot](https://widgetbot.io) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![Crate](https://data.jsdelivr.com/v1/package/npm/@widgetbot/crate/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/crate) [![](https://data.jsdelivr.com/v1/package/npm/@widgetbot/html-embed/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/html-embed)
+# [WidgetBot](https://widgetbot.io) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![Crate](https://img.shields.io/jsdelivr/npm/hm/@widgetbot/crate?color=ff6135&label=jsdelivr%20hits%20%28Crate%29)](https://www.jsdelivr.com/package/npm/@widgetbot/crate) [![](https://img.shields.io/jsdelivr/npm/hm/@widgetbot/html-embed?color=ff6135&label=jsdelivr%20hits%20%28html-embed%29)](https://www.jsdelivr.com/package/npm/@widgetbot/html-embed)
 
 > WidgetBot is a pixel-perfect open-source Discord chat widget for your website.
 

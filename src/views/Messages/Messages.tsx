@@ -48,7 +48,7 @@ export const Messages = observer(({ guild, channel, thread = false }: MessagesPr
 
   if (error) addNotification({
     level: 'warning',
-    title: Locale.translate('frontend.notif.loaderror.messages'),
+    title: Locale.translate('notif.loaderror.messages'),
     message: formatError(error),
     autoDismiss: 0,
 
@@ -59,7 +59,7 @@ export const Messages = observer(({ guild, channel, thread = false }: MessagesPr
   if (!groupedMessages.length)
     return (
       <NoMessages className="no-messages">
-        <Info>{Locale.translate('frontend.nomessages')}</Info>
+        <Info>{Locale.translate('nomessages')}</Info>
       </NoMessages>
     );
 

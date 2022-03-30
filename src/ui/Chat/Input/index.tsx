@@ -64,13 +64,13 @@ class MagicTextarea extends React.Component<Props> {
       <NoPerms
         onClick={!authStore.user && (generalStore.settings?.guestMode ? (() => generalStore.toggleMenu(true)).bind({ props: { GeneralStore: generalStore }}) : login.bind({ props: { AuthStore: authStore }}))}
       >
-        { !user ? Locale.translate('frontend.input.login') : Locale.translate('frontend.input.noperms') }
+        { !user ? Locale.translate('input.login') : Locale.translate('input.noperms') }
       </NoPerms>
     );
 
     if (this.props.thread && (generalStore.activeThread?.locked || generalStore.activeThread?.archivedAt)) return (
       <NoPerms>
-        { generalStore.activeThread.locked ? Locale.translate('frontend.input.threadlocked') : Locale.translate('frontend.input.threadarchived') }
+        { generalStore.activeThread.locked ? Locale.translate('input.threadlocked') : Locale.translate('input.threadarchived') }
       </NoPerms>
     );
 

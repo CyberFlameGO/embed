@@ -59,9 +59,9 @@ export const tags = ({author, crosspost, referenceGuild, guest}: Omit<Props, 'ti
       ( guest ? <Tag className="guest">Guest</Tag>
       : author.flags & 1 << 12 ? <Tag className="verified system">{verified} System</Tag>
       : referenceGuild === '667560445975986187' ? <Tag className="system">System</Tag>
-      : crosspost ? <Tag className="server">{Locale.translate('frontend.tag.server')}</Tag>
-      : author.flags & 1 << 16 ? <Tag className="verified bot">{verified} {Locale.translate('frontend.tag.bot')}</Tag>
-      : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>
+      : crosspost ? <Tag className="server">{Locale.translate('tag.server')}</Tag>
+      : author.flags & 1 << 16 ? <Tag className="verified bot">{verified} {Locale.translate('tag.bot')}</Tag>
+      : <Tag className="bot">{Locale.translate('tag.bot')}</Tag>
       )}
     {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
   </React.Fragment>

@@ -31,3 +31,9 @@ export const Spinner = styled('div')`
     animation-delay: -0.9s;
   }
 `
+
+export const Loading = styled(Spinner)`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+`

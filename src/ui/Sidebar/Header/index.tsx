@@ -39,8 +39,8 @@ export class Header extends React.Component {
 							if (!data || !data.guild) {
 								addNotification({
 									level: 'error',
-									title: Locale.translate('frontend.notif.serverunavailable'),
-									message: Locale.translate('frontend.notif.serverunavailable.desc'),
+									title: Locale.translate('notif.serverunavailable'),
+									message: Locale.translate('notif.serverunavailable.desc'),
 									autoDismiss: 0,
 								});
 								return null;
@@ -90,7 +90,7 @@ export class Header extends React.Component {
 										<Tooltip
 											placement="bottom"
 											overlay={
-												`${data.guild.memberCount === 1 ? Locale.translate('frontend.membercount.one.tooltip') : Locale.translate('frontend.membercount.tooltip', {COUNT: data.guild.memberCount.toLocaleString()})}`
+												`${data.guild.memberCount === 1 ? Locale.translate('membercount.one.tooltip') : Locale.translate('membercount.tooltip', {COUNT: data.guild.memberCount.toLocaleString()})}`
 											}
 										>
 											<Count className="count">{formatter.format(data.guild.memberCount)}</Count>
@@ -117,7 +117,7 @@ export class Header extends React.Component {
 									<Tooltip
 										placement="bottom"
 										overlay={
-											`${data.guild.memberCount === 1 ? Locale.translate('frontend.membercount.one.tooltip') : Locale.translate('frontend.membercount.tooltip', {COUNT: data.guild.memberCount.toLocaleString()})}`
+											`${data.guild.memberCount === 1 ? Locale.translate('membercount.one.tooltip') : Locale.translate('membercount.tooltip', {COUNT: data.guild.memberCount.toLocaleString()})}`
 										}
 									>
 										<Count className="count">{formatter.format(data.guild.memberCount)}</Count>

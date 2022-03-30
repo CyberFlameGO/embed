@@ -11,6 +11,8 @@ import { store } from '@models'
 import { useCacheLoaded } from '@hooks'
 import Authenticate from "@ui/Modal/screens/Authenticate";
 import {Locale} from "@lib/Locale";
+import { Loading } from '@ui/Overlays/Loading/elements'
+import { Main } from './elements'
 
 const App = observer(() => {
   const cacheLoaded = useCacheLoaded()
@@ -21,14 +23,17 @@ const App = observer(() => {
       <ThemeProvider>
         <Switch>
           <Route path="/:guild">
+            <Loading id="loading" />
             <Authenticate />
             <Modal />
             <Notifications />
-            <Sidebar />
-            <Switch>
-              <Route path="/:guild/:channel" component={MessagesView} />
-              <Route component={ChooseChannel} />
-            </Switch>
+            <Main>
+              <Sidebar />
+              <Switch>
+                <Route path="/:guild/:channel" component={MessagesView} />
+                <Route component={ChooseChannel} />
+              </Switch>
+            </Main>
           </Route>
 
           <Redirect to="/299881420891881473" />

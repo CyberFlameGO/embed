@@ -39,7 +39,7 @@ export default class Panel extends React.Component<{}> {
 							target="_blank"
 							onClick={this.onClick.bind(this)}
 						>
-							{Locale.translate(`frontend.auth.${authStore.user ? 'logout' : 'login'}`)}
+							{Locale.translate(`auth.${authStore.user ? 'logout' : 'login'}` as const)}
 						</Auth>
 					}
 				</Developers>
@@ -81,7 +81,7 @@ export class SingleChannelAuth extends React.Component<{}> {
 		if (queryParams.has('username')) return null
 
 		return (
-			<Tooltip placement="bottom" overlay={Locale.translate(`frontend.auth.${authStore.user ? 'logout' : 'login'}`)}>
+			<Tooltip placement="bottom" overlay={Locale.translate(`auth.${authStore.user ? 'logout' : 'login'}` as const)}>
 				<Auth
 					className="auth"
 					target="_blank"

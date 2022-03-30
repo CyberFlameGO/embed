@@ -29,8 +29,8 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   if (!data || !data.channel) {
     addNotification({
       level: 'error',
-      title: Locale.translate('frontend.notif.channelunavailable'),
-      message: Locale.translate('frontend.notif.channelunavailable.desc'),
+      title: Locale.translate('notif.channelunavailable'),
+      message: Locale.translate('notif.channelunavailable.desc'),
       autoDismiss: 0,
 
     });
@@ -38,7 +38,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   }
   if (error) addNotification({
     level: 'warning',
-    title: Locale.translate('frontend.notif.loaderror.chat'),
+    title: Locale.translate('notif.loaderror.chat'),
     message: formatError(error),
     autoDismiss: 0,
 
@@ -85,7 +85,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
           }}
           innerRef={ref => (inputRef.current = ref)}
           innerProps={{
-            placeholder: channelName ? Locale.translate('frontend.input.message', {CHANNEL: channelName}) : null
+            placeholder: channelName ? Locale.translate('input.message', {CHANNEL: channelName}) : null
           }}
         />
 

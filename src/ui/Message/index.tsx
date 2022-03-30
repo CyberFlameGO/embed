@@ -142,7 +142,7 @@ class Message extends React.PureComponent<Props, any> {
                             overlay={Moment(repliedMessage.editedAt).format('LLLL')}
                           >
                             <Edited className="edited">
-                              {Locale.translate('frontend.edited')}
+                              {Locale.translate('edited')}
                             </Edited>
                           </Tooltip>
                         )}
@@ -249,7 +249,7 @@ class Message extends React.PureComponent<Props, any> {
                             overlay={Moment(message.editedAt).format('LLLL')}
                           >
                             <Edited className="edited">
-                              {Locale.translate('frontend.edited')}
+                              {Locale.translate('edited')}
                             </Edited>
                           </Tooltip>
                         )}
@@ -446,7 +446,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Pinned>
-                      {member} {Locale.translate('frontend.messages.pinned')}
+                      {member} {Locale.translate('messages.pinned')}
                     </Secondary.Pinned>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -484,7 +484,7 @@ class Message extends React.PureComponent<Props, any> {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        {member} {Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: generalStore.guild.name, TIER: message.type.replace('UserPremiumGuildTier', '')})}
+                        {member} {Locale.translate('messages.boost')} {Locale.translate('messages.boost.achieved', {GUILD: generalStore.guild.name, TIER: message.type.replace('UserPremiumGuildTier', '')})}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
@@ -493,7 +493,7 @@ class Message extends React.PureComponent<Props, any> {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        {member} {Locale.translate('frontend.messages.boost')}
+                        {member} {Locale.translate('messages.boost')}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
@@ -511,7 +511,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Add>
-                      {member} {Locale.translate('frontend.messages.follow', {HOOK: message.content})}
+                      {member} {Locale.translate('messages.follow', {HOOK: message.content})}
                     </Secondary.Add>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -579,7 +579,7 @@ class Message extends React.PureComponent<Props, any> {
 
                 return <React.Fragment key={message.id}>
                   <Secondary.Thread onClick={openThread}>
-                    {member} {Locale.translate('frontend.messages.threadcreated')} <span>{message.content}</span>
+                    {member} {Locale.translate('messages.threadcreated')} <span>{message.content}</span>
                   </Secondary.Thread>
                   <Timestamp time={message.createdAt} />
                   {message.thread && <div style={{ marginLeft: '60px' }}>

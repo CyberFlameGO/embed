@@ -61,7 +61,8 @@ export const ThemeProvider = ({ children }) => {
     url: {
       preset: queryParams.get('preset') as 'crate' | null,
       api: queryParams.get('api')
-    }
+    },
+    loadedSettings: !!settings
   };
   // TODO: I found why the URL parsing doesn't work l m a o.
 

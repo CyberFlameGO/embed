@@ -69,7 +69,7 @@ export const Header = observer(({ channel, guild, thread }: HeaderProps) => {
             <SingleChannelAuthWrapper>
                 <SingleChannelAuth />
             </SingleChannelAuthWrapper>
-            {invite ? <Tooltip placement="bottom" overlay={Locale.translate('frontend.opendiscord.tooltip')}>
+            {invite ? <Tooltip placement="bottom" overlay={Locale.translate('opendiscord.tooltip')}>
                     <Join
                         className="join"
                         href={invite}
@@ -77,7 +77,7 @@ export const Header = observer(({ channel, guild, thread }: HeaderProps) => {
                         // TODO: Fix join button
                         // onClick={this.join}
                     >
-                        {Locale.translate('frontend.opendiscord')}
+                        {Locale.translate('opendiscord')}
                     </Join>
                 </Tooltip> : null}
 

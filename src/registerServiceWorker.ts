@@ -69,8 +69,8 @@ function registerValidSW(swUrl: string) {
               if (navigator.serviceWorker.controller) {
                 addNotification({
                   level: 'info',
-                  title: Locale.translate('frontend.notif.update'),
-                  message: Locale.translate('frontend.notif.update.desc'),
+                  title: Locale.translate('notif.update'),
+                  message: Locale.translate('notif.update.desc'),
                   autoDismiss: 0,
                   action: {
                     label: 'Refresh',
@@ -118,10 +118,10 @@ function checkValidServiceWorker(swUrl: string) {
     .catch(() => {
       addNotification({
         level: 'warning',
-        title: Locale.translate('frontend.notif.serverissues'),
+        title: Locale.translate('notif.serverissues'),
         autoDismiss: 15,
         message:
-        Locale.translate('frontend.notif.serverissues.desc')
+        Locale.translate('notif.serverissues.desc')
       })
     })
 }

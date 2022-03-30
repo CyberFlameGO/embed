@@ -28,7 +28,7 @@ const queryParams = new URLSearchParams(location.search)
 
 const loginError = (msg: string) => addNotification({
   level: 'warning',
-  title: Locale.translate('frontend.notif.login.unsuccessful'),
+  title: Locale.translate('notif.login.unsuccessful'),
   message: msg.replace('GraphQL error: ', ''),
   autoDismiss: 0,
 });

@@ -8,10 +8,10 @@ const ErrorAhoy = ({ message }) => (
   <Wrapper>
     <Header>
       <Name>
-        {Locale.translate('frontend.errorahoy')}
+        {Locale.translate('errorahoy')}
       </Name>
       <Topic>
-      {Locale.translate('frontend.errorahoy.desc')}
+      {Locale.translate('errorahoy.desc')}
       </Topic>
     </Header>
     <Error>

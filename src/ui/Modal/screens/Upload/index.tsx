@@ -1,9 +1,10 @@
-import { Root, Top, Title, Close, Body, Image, Field, Checkbox, Button, Loading } from './elements'
+import { Root, Top, Title, Close, Body, Image, Field, Checkbox, Button } from './elements'
 import { store } from '@models'
 import { generalStore } from '@store'
 import { useRef, useState } from 'react'
 import { useSendMessage } from '@hooks'
 import { Input } from '../Authenticate/elements'
+import { Loading } from '@ui/Overlays/Loading/elements'
 
 const Upload = () => {
   const file = generalStore.file

@@ -1,7 +1,7 @@
 import './res/globalStyles.css'
 import './res/globalStyles.ts'
 
-import styled, { injectGlobal, Theme } from '@lib/emotion'
+import styled, { css, injectGlobal, Theme } from '@lib/emotion'
 
 export const Notifications = styled('div')`
   button {
@@ -28,6 +28,10 @@ export const Notifications = styled('div')`
   }
 `
 
+export const Main = styled.main`
+  height: 100%;
+`
+
 export namespace GlobalStyles {
   let injected = false
   const CSS = document.createElement('style')
@@ -46,11 +50,6 @@ export namespace GlobalStyles {
         --font-display: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
 
-      #root {
-        opacity: 1 !important;
-        transform: initial !important;
-      }
-
       /* Resets */
       * {
         color: ${theme.colors.primary};
@@ -60,6 +59,16 @@ export namespace GlobalStyles {
         -webkit-tap-highlight-color: transparent;
         word-break: break-word;
       }
+
+      ${theme.loadedSettings && css`
+        main {
+          opacity: 1 !important;
+          transform: initial !important;
+        }
+        #loading {
+          display: none;
+        }
+      `}
     `
     CSS.setAttribute('custom-css', theme.css)
     document.body.appendChild(CSS)
@@ -79,6 +88,16 @@ export namespace GlobalStyles {
       * {
         color: ${theme.colors.primary};
       }
+
+      ${theme.loadedSettings && css`
+        main {
+          opacity: 1 !important;
+          transform: initial !important;
+        }
+        #loading {
+          display: none;
+        }
+      `}
     `
   }
 }
