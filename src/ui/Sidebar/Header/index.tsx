@@ -16,8 +16,12 @@ import { Locale } from '@lib/Locale'
 import categorise from "@ui/Sidebar/Channels/categorise";
 import {autorun} from "mobx";
 import {Util} from '@lib/Util';
+import { EmojiStore } from '@services/Emoji'
+import { defaultEmojis } from '@services/Emoji/defaultEmojis'
 
 const formatter = new Intl.NumberFormat('en', { notation: 'compact' })
+
+const { compare } = new Intl.Collator()
 
 @observer
 export class Header extends React.Component {
@@ -57,6 +61,17 @@ export class Header extends React.Component {
 							} catch (_) {
 								generalStore.setChannels([]);
 							}
+
+							generalStore.setEmojis(new EmojiStore(
+								...generalStore.guild?.emojis.sort((a, b) => compare(a.name, b.name)).map(e => ({
+									category: 'custom',
+									emoji: e.id,
+									keywords: [e.name],
+									animated: e.animated,
+									available: e.available
+								})),
+								...defaultEmojis
+							))
 
 							if (error) return null;
 

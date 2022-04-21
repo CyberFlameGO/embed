@@ -1,3 +1,5 @@
+import { Emoji } from "@services/Emoji";
+
 const categoryMap = require('./emojis.json');
 
 const emojisArray = Object.entries(categoryMap).map(([category, emojisObj]) => {
@@ -9,8 +11,10 @@ const emojisArray = Object.entries(categoryMap).map(([category, emojisObj]) => {
       emoji: utf8,
       keywords: array ? keywords : obj ? undefined : [keywords],
       category,
+      available: true,
+      animated: false,
       ...(obj && keywords)
-    }
+    } as Emoji
   })
 });
 

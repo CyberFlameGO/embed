@@ -1,6 +1,8 @@
 import {action, autorun, observable} from "mobx";
-import { GuildInfo_guild, Message_thread, Settings_settings } from "@generated";
+import { GuildInfo_guild, Message, Message_thread, Settings_settings } from "@generated";
 import {ICategory} from "@ui/Sidebar/Channels/categorise";
+import { EmojiStore } from "@services/Emoji";
+import { defaultEmojis } from "@services/Emoji/defaultEmojis";
 
 export class GeneralStore {
   @observable appName = 'WidgetBot';
@@ -15,6 +17,9 @@ export class GeneralStore {
   @observable activeThread?: Omit<Message_thread, '__typename'>;
   @observable threadFullscreen: boolean = false;
   @observable file?: File;
+  @observable emojis = new EmojiStore(...defaultEmojis);
+  @observable pins?: Message[];
+  @observable pinsOpen: boolean = false;
 
   constructor() {
     autorun(() => {
@@ -57,6 +62,18 @@ export class GeneralStore {
 
   @action setFile(file: File) {
     this.file = file;
+  }
+
+  @action setEmojis(emojis: EmojiStore) {
+    this.emojis = emojis;
+  }
+
+  @action setPins(pins: Message[]) {
+    this.pins = pins;
+  }
+
+  @action togglePins(res: boolean = !this.pinsOpen) {
+    this.pinsOpen = res
   }
 }
 

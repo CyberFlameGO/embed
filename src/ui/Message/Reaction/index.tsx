@@ -2,7 +2,7 @@ import { Message_reactions } from '@generated'
 import webpCheck from '@ui/shared/webpCheck'
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
-import { emojis } from '@services/Emoji'
+import { generalStore } from '@store'
 
 import { Count, Emoji, Root } from './elements'
 
@@ -16,7 +16,7 @@ class Reaction extends React.Component<Props> {
     return (
       <Tooltip
         placement="top"
-        overlay={`:${emojiId ? emojiName : emojis.get(emojiName)?.keywords[0]}:`}
+        overlay={`:${emojiId ? emojiName : generalStore.emojis.get(emojiName)?.keywords[0]}:`}
         mouseEnterDelay={0.5}
       >
         <span>

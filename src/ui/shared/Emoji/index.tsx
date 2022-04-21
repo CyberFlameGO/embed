@@ -4,7 +4,7 @@ import memoize from 'memoizee'
 import * as React from 'react'
 import emoji from 'react-easy-emoji'
 import { Base, Emote } from '@ui/shared/Emoji/elements'
-import { emojis } from '@services/Emoji'
+import { generalStore } from '@store'
 import Tooltip from 'rc-tooltip'
 
 interface Props {
@@ -45,7 +45,7 @@ class Emoji extends React.PureComponent<Props> {
     if (resolveNames) text = this.resolve(text)
 
     const resolved = emoji(text, (code, string, key) => {
-      const emoji = emojis.get(string)
+      let emoji = generalStore.emojis.get(string)
 
       const emote = (
         <Emote
@@ -72,7 +72,7 @@ class Emoji extends React.PureComponent<Props> {
       )
     })
 
-    return this.jumbofy(resolved)
+    return resolved // this.jumbofy(resolved)
   }
 
   getText() {
@@ -82,7 +82,7 @@ class Emoji extends React.PureComponent<Props> {
 
   resolve = memoize((text: string) => {
     const parsed = text.replace(/:([^\s:]+?):/g, (match, name) => {
-      const result = emojis.get(name)
+      const result = generalStore.emojis.get(name)
       return result ? result.emoji : match
     })
 
@@ -114,32 +114,32 @@ class Emoji extends React.PureComponent<Props> {
     }
   }
 
-  jumbofy(fragment: any[]) {
-    const { onlyEmojiClassName } = this.props
+  // jumbofy(fragment: any[]) {
+  //   const { onlyEmojiClassName } = this.props
 
-    if (onlyEmojiClassName) {
-      // Iterate through all fragment elements
-      // until a either the fragment is not an object
-      // and it's string contains characters other than
-      // a space (or line break)
-      const onlyEmoji = !fragment.find(
-        fragment => !(fragment instanceof Object || !/\S/.test(fragment))
-      )
+  //   if (onlyEmojiClassName) {
+  //     // Iterate through all fragment elements
+  //     // until a either the fragment is not an object
+  //     // and it's string contains characters other than
+  //     // a space (or line break)
+  //     const onlyEmoji = !fragment.find(
+  //       fragment => !(fragment instanceof Object || !/\S/.test(fragment))
+  //     )
 
-      if (onlyEmoji) {
-        return fragment.map(
-          piece =>
-            piece instanceof Object
-              ? React.cloneElement(piece, {
-                  className: cx(onlyEmojiClassName, piece.props.className)
-                })
-              : piece
-        )
-      }
-    }
+  //     if (onlyEmoji) {
+  //       return fragment.map(
+  //         piece =>
+  //           piece instanceof Object
+  //             ? React.cloneElement(piece, {
+  //                 className: cx(onlyEmojiClassName, piece.props.className)
+  //               })
+  //             : piece
+  //       )
+  //     }
+  //   }
 
-    return fragment
-  }
+  //   return fragment
+  // }
 }
 
 export default Emoji

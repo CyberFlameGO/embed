@@ -51,13 +51,13 @@ export const useSendMessage = (thread?: string) => {
 
         newMessage.isGuest = true
 
-        if (!data.channel.messages.find(m => m.id === newMessage.id))
-          data.channel.messages.push(newMessage)
+        if (!data.channel.messageBunch.messages.find(m => m.id === newMessage.id))
+          data.channel.messageBunch.messages.push(newMessage)
 
         if (!(newMessage.flags & 1 << 4)) {
-          // trims spaces so Discord's normalization doesn't break it; ideally we would use nonce instead of content https://github.com/discord/discord-api-docs/discussions/3396
-          const optimisticIndex = data.channel.messages.findIndex(m => m.content.replace(/ /g, '') === newMessage.content.replace(/ /g, '') && m.flags & 1 << 4)
-          if (optimisticIndex > -1) data.channel.messages.splice(optimisticIndex, 1)
+          // trims spaces so Discord's normalization doesn't break it
+          const optimisticIndex = data.channel.messageBunch.messages.findIndex(m => m.content.replace(/ /g, '') === newMessage.content.replace(/ /g, '') && m.flags & 1 << 4)
+          if (optimisticIndex > -1) data.channel.messageBunch.messages.splice(optimisticIndex, 1)
         }
 
         store.writeQuery({query: MESSAGES, variables: {channel, thread}, data})

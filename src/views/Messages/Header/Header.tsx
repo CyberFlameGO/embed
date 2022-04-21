@@ -24,6 +24,7 @@ import {Auth} from "@ui/Sidebar/Panel/elements";
 import {observer} from "mobx-react";
 import { SingleChannelAuth } from '@ui/Sidebar/Panel'
 import {generalStore} from "@store";
+import Pins from './Pins'
 
 export interface HeaderProps {
   channel: string,
@@ -66,6 +67,7 @@ export const Header = observer(({ channel, guild, thread }: HeaderProps) => {
                         </Topic>
                     )}
             </Stretch>
+            <Pins />
             <SingleChannelAuthWrapper>
                 <SingleChannelAuth />
             </SingleChannelAuthWrapper>

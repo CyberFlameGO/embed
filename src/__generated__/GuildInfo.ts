@@ -50,6 +50,14 @@ export interface GuildInfo_guild_roles {
   color: number;
 }
 
+export interface GuildInfo_guild_emojis {
+  __typename: "Emoji";
+  id: string;
+  name: string;
+  animated: boolean;
+  available: boolean;
+}
+
 export interface GuildInfo_guild {
   __typename: "Guild";
   id: string;
@@ -64,6 +72,7 @@ export interface GuildInfo_guild {
   tier: string;
   channels: GuildInfo_guild_channels[];
   roles: GuildInfo_guild_roles[];
+  emojis: GuildInfo_guild_emojis[];
 }
 
 export interface GuildInfo {

@@ -40,8 +40,9 @@ export const ThemeProvider = ({ children }) => {
   
   if (queryParams.has('username')) {
     const name = decodeURIComponent(queryParams.get('username'))
+    const avatar = queryParams.has('avatar') && decodeURIComponent(queryParams.get('avatar'))
     if (name !== authStore.user?.username)
-      authStore.guestLogin(name).then(async () => {
+      authStore.guestLogin(name, avatar).then(async () => {
         await authStore.setGuestUser(name);
         generalStore.needsUpdate = true;
       })
@@ -64,7 +65,6 @@ export const ThemeProvider = ({ children }) => {
     },
     loadedSettings: !!settings
   };
-  // TODO: I found why the URL parsing doesn't work l m a o.
 
   GlobalStyles.inject(themeContext);
 

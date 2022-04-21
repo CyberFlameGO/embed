@@ -1,10 +1,11 @@
 import matchSorter from 'match-sorter'
-import { defaultEmojis } from './defaultEmojis'
 
 export interface Emoji {
   category: string
   emoji: string
   keywords: string[]
+  animated: boolean
+  available: boolean
 }
 
 export class EmojiStore extends Array<Emoji> {
@@ -42,5 +43,3 @@ export class EmojiStore extends Array<Emoji> {
     return new EmojiStore(...results)
   }
 }
-
-export const emojis = new EmojiStore(...defaultEmojis)

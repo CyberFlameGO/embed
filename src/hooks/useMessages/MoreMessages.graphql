@@ -1,6 +1,6 @@
 #import "./Fragments/Message.graphql"
 
-query Messages(
+query MoreMessages(
     $channel: String!
     $thread: String
     $around: String
@@ -15,19 +15,11 @@ query Messages(
                 messages {
                     ...Message
                 }
-
-                pinnedMessages {
-                    ...Message
-                }
             }
         }
         ... on AnnouncementChannel {
             messageBunch(id: $thread, limit: $limit, after: $after, before: $before, around: $around) {
                 messages {
-                    ...Message
-                }
-
-                pinnedMessages {
                     ...Message
                 }
             }

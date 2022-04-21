@@ -40,5 +40,12 @@ query GuildInfo($guild: String!) {
             name
             color
         }
+
+        emojis {
+            id
+            name
+            animated
+            available
+        }
     }
 }

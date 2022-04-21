@@ -26,7 +26,7 @@ export const Root = styled('dialog')<IRoot>`
   left: 0;
 
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.85);
   border: none;
   opacity: 0;
   transition: opacity 0.1s ease;

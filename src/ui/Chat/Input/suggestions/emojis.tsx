@@ -2,10 +2,11 @@ import * as React from 'react'
 
 import { Description, Icon, Info, Name } from '../elements'
 import { Suggestion } from '../types'
-import { Emoji, emojis } from '@services/Emoji'
+import { Emoji } from '@services/Emoji'
+import { generalStore } from '@store'
 
 const Emojis: Suggestion<Emoji> = {
-  getSuggestions: query => emojis.query(query),
+  getSuggestions: query => generalStore.emojis.query(query),
   extract: query =>
     query.length > 2 &&
     query[0] === ':' &&

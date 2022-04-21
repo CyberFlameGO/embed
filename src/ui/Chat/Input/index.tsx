@@ -14,6 +14,9 @@ import { generalStore, authStore } from "@store";
 import { login } from "@views/Messages/Header";
 import { Locale } from "@lib/Locale";
 import { store } from "@models";
+import EmojiButton from "./EmojiButton";
+import Spinner from 'react-spinkit'
+import Loadable from 'react-loadable'
 
 interface Props extends ChatProps {
   innerRef?: (textarea: HTMLTextAreaElement) => void,
@@ -24,6 +27,13 @@ interface Props extends ChatProps {
   channel?: any
 }
 
+const EmojiPicker = Loadable({
+  loader: () =>
+    import('./EmojiPicker'),
+  loading: props =>
+    props.pastDelay ? <Spinner name="ball-clip-rotate-multiple" /> : null
+})
+
 export const handlers = [Emojis, Mentions, Commands, Channels];
 
 @observer
@@ -33,6 +43,8 @@ class MagicTextarea extends React.Component<Props> {
     caretPosition: -1,
 
     showSuggestions: false,
+    showEmojiPicker: false,
+
     handler: null,
 
     query: null
@@ -44,6 +56,7 @@ class MagicTextarea extends React.Component<Props> {
   getValue = () => this.textarea.value;
   textarea: HTMLTextAreaElement;
   suggestions: Suggestions;
+  emojiButton: HTMLButtonElement;
 
   onChange(value) {
     const { onChange } = this.props;
@@ -162,6 +175,29 @@ class MagicTextarea extends React.Component<Props> {
             }
           }}
         />
+
+        <EmojiButton
+          pickerIsOpen={this.state.showEmojiPicker}
+          setPickerState={state => this.setState({ showEmojiPicker: state })}
+          setElement={element => this.emojiButton = element}
+        />
+
+        {this.state.showEmojiPicker && (
+          <EmojiPicker
+            button={this.emojiButton}
+            close={() => this.setState({ showEmojiPicker: false })}
+            onSelect={emoji => {
+              const text = `${this.textarea.value}${emoji} `;
+              this.textarea.value = text;
+
+              this.textarea.focus();
+              this.textarea.setSelectionRange(text.length, text.length)
+
+              this.setState({ showEmojiPicker: false })
+              this.onChange(text);
+            }}
+          />
+        )}
 
         {this.state.showSuggestions && (
           <Suggestions
