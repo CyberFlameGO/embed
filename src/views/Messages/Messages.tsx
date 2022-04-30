@@ -7,8 +7,8 @@ import { MessageList, MessagesWrapper, Scroller } from "./elements";
 import {
   CellMeasurer,
   CellMeasurerCache,
-  InfiniteLoader
 } from "react-virtualized";
+import { InfiniteLoader } from 'react-window-infinite-loader';
 import { observer, useObservable } from "mobx-react-lite";
 import Message from "@ui/Message";
 import {Locale} from "@lib/Locale";
@@ -77,7 +77,7 @@ export const Messages = observer(({ guild, channel, thread = false }: MessagesPr
 
           return (
             <InfiniteLoader
-              isRowLoaded={({ index }) => {
+              isItemLoaded={({ index }) => {
                 const loadMore = [0].includes(index) ;
 
                 if (loadMore) {
@@ -87,7 +87,7 @@ export const Messages = observer(({ guild, channel, thread = false }: MessagesPr
 
                 return true;
               }}
-              loadMoreRows={async () => {
+              loadMoreItems={async () => {
                 if (scroller.isLoadingMore) return;
 
                 scroller.isLoadingMore = true;
@@ -98,15 +98,15 @@ export const Messages = observer(({ guild, channel, thread = false }: MessagesPr
                 // could be a message added into its group
                 cache.clear(2, 0);
               }}
-              rowCount={Infinity}
+              itemCount={Infinity}
               threshold={1}
             >
-              {({ onRowsRendered, registerChild }) => {
+              {({ onItemsRendered, ref }) => {
                 return (
                     <Scroller
                         width={width}
                         height={height}
-                        onRowsRendered={(data) => {
+                        onItemsRendered={(data) => {
                           const diff = groupedMessages.length - scroller.count
                           if (groupedMessages.length !== scroller.count) {
                             if (scroller.count !== -1) {
@@ -118,7 +118,7 @@ export const Messages = observer(({ guild, channel, thread = false }: MessagesPr
                             scroller.count = groupedMessages.length
                           }
 
-                          onRowsRendered(data)
+                          onItemsRendered(data)
                         }}
                         willUnmount={() => {
                           scroller.count = -1
@@ -126,9 +126,8 @@ export const Messages = observer(({ guild, channel, thread = false }: MessagesPr
                           scroller.readyToLoadMore = false
                           scroller.isLoadingMore = false
                         }}
-                        listRef={registerChild}
-                        deferredMeasurementCache={cache}
-                        rowHeight={cache.rowHeight}
+                        listRef={ref}
+                        rowHeight={index => cache.rowHeight({ index })}
                         rowRenderer={({ index, key, style, parent }) =>
                             groupedMessages[index] ? (
                                 <CellMeasurer

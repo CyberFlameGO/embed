@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import Scrollbars from 'react-custom-scrollbars-2'
-import { List, ListProps } from 'react-virtualized'
+import { VariableSizeGrid, VariableSizeGridProps } from 'react-window'
 
 const listStyle = {
   overflowX: null,
@@ -11,9 +11,9 @@ const listStyle = {
 const noop = () => {}
 
 class SmartList extends Component<
-  ListProps & {
+  VariableSizeGridProps & {
     className?: string
-    listRef?: (list: List) => void
+    listRef?: (list: VariableSizeGrid) => void
     scrollRef?: (scroller: Scrollbars) => void
     willUnmount?: () => void
   }
@@ -23,14 +23,13 @@ class SmartList extends Component<
     listRef: noop,
     scrollRef: noop
   }
-  list: List
+  list: VariableSizeGrid
   scroller: Scrollbars
 
   toList = ({ target }) => {
     const { scrollTop, scrollLeft } = target
-    const { Grid: grid } = this.list
 
-    grid.handleScrollEvent({ scrollTop, scrollLeft })
+    this.list.scrollTo({ scrollLeft, scrollTop })
   }
 
   toScroller = ({ scrollTop }) => {
@@ -59,7 +58,7 @@ class SmartList extends Component<
           this.props.scrollRef(instance)
         }}
       >
-        <List
+        <VariableSizeGrid
           {...props}
           ref={instance => {
             this.list = instance
