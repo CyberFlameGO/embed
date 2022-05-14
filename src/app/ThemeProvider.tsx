@@ -33,11 +33,11 @@ export const ThemeProvider = ({ children }) => {
       accent: settings?.theme?.colors?.accent || Constants.THEME_COLOR_ACCENT,
       background: settings?.theme?.colors?.background || Constants.THEME_BACKGROUND
     },
-    css: settings?.theme?.css || ``
+    css: queryParams.has('css') && decodeURIComponent(queryParams.get('css')) || settings?.theme?.css || ``
   };
 
   generalStore.setSettings(settings)
-  
+
   if (queryParams.has('username')) {
     const name = decodeURIComponent(queryParams.get('username'))
     if (name !== authStore.user?.username)
