@@ -5,7 +5,7 @@ import * as Sentry from '@sentry/browser';
 import * as ReactDOM from 'react-dom'
 import { Suspense, lazy } from 'react'
 
-import { Loading } from '@ui/Overlays'
+import { Loading } from '@ui/Overlays/Loading/elements'
 
 import icon from '@images/cookies/icon.svg'
 import screenshot from '@images/cookies/screenshot.png'
@@ -35,10 +35,7 @@ if (ls) {
   const Renderer = lazy(() => import('./Renderer'))
   ReactDOM.render(
     <Suspense 
-      fallback={<>
-        <Loading />
-        <style>{'#root {opacity: 100%; height: 100vh} .overlay {width: 100%}'}</style>
-      </>}>
+      fallback={<Loading />}>
       <Renderer />
     </Suspense>
   , document.getElementById('root'))

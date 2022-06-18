@@ -21,13 +21,15 @@ export const useMessages = (channel: string, guild: string, thread?: string) => 
 
   generalStore.setPins(ready ? query.data.channel.messageBunch.pinnedMessages : null)
 
+  let fullyLoaded = false
+
   async function fetchMore(options?: {
     around?: string;
     after?: string;
     before?: string;
     limit?: number;
   }) {
-    if (!channel) return;
+    if (!channel || fullyLoaded) return;
     if (!options) {
       const [firstMessage] = messages;
       if (!firstMessage) return;
@@ -38,13 +40,18 @@ export const useMessages = (channel: string, guild: string, thread?: string) => 
     await query.fetchMore({
       query: MORE_MESSAGES,
       variables: { channel, thread, ...options },
-      updateQuery: (prev, { fetchMoreResult }) =>
-        produce(prev, draftState => {
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (fetchMoreResult.channel.messageBunch.messages.length === 0) {
+          fullyLoaded = true
+          return
+        }
+        return produce(prev, draftState => {
           draftState.channel.messageBunch.messages = [
             ...fetchMoreResult.channel.messageBunch.messages,
             ...draftState.channel.messageBunch.messages
           ];
         })
+      }
     })
   }
 

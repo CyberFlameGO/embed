@@ -473,16 +473,14 @@ class Message extends React.PureComponent<Props, any> {
               }
 
               case MessageType.GuildMemberJoin: { // 7
-                const member = (
-                  <Member id={message.author.id} color={message.author.color}>
-                    {message.author.name}
-                  </Member>
-                );
-
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Add>
-                      {reactStringReplace(joinMessage(message), '{member}', () => member)}
+                      {reactStringReplace(joinMessage(message), '{member}', (match, i) => (
+                        <Member key={match + i} id={message.author.id} color={message.author.color}>
+                          {message.author.name}
+                        </Member>
+                      ))}
                     </Secondary.Add>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -530,7 +528,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Add>
-                      {member} {reactStringReplace(Locale.translate('messages.follow'), '{HOOK}', () => <Name>{message.content}</Name>)}
+                      {member} {reactStringReplace(Locale.translate('messages.follow'), '{HOOK}', (match, i) => <Name key={match + i}>{message.content}</Name>)}
                     </Secondary.Add>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
