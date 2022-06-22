@@ -40,11 +40,19 @@ export const ThemeProvider = ({ children }) => {
 
   if (queryParams.has('username')) {
     const name = decodeURIComponent(queryParams.get('username'))
-    if (name !== authStore.user?.username)
-      authStore.guestLogin(name).then(async () => {
+    if (name !== authStore.user?.username) {
+      let ls: Storage
+      try {
+        ls = localStorage
+      } catch (e) {
+        generalStore.toggleMenu(true)
+      }
+
+      if (ls) authStore.guestLogin(name).then(async () => {
         await authStore.setGuestUser(name);
         generalStore.needsUpdate = true;
       })
+    }
   }
 
   const themeContext: ThemeContext = {

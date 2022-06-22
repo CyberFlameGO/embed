@@ -15,6 +15,9 @@ export const Root = styled(Content)<Props>`
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+  cursor: default;
+  max-height: 100%;
+  overflow: auto;
   ${({ loading }) =>
     loading
       ? css`
@@ -123,4 +126,14 @@ export const Overlay = styled('div')`
   z-index: 100; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
   background-color: rgba(0, 0, 0, 0.7);
+`
+
+export const LSText = styled.p`
+  margin: 8px 0;
+`
+
+export const XEye = styled.img`
+  height: 1.2rem;
+  width: 1.2rem;
+  vertical-align: bottom;
 `

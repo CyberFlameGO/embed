@@ -11,6 +11,7 @@ export interface ChannelName_channel_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
+  rateLimitPerUser: number | null;
   nsfw: boolean;
   canSend: boolean;
 }
@@ -19,6 +20,7 @@ export interface ChannelName_channel_AnnouncementChannel {
   __typename: "AnnouncementChannel";
   name: string;
   id: string;
+  rateLimitPerUser: number | null;
   nsfw: boolean;
   canSend: boolean;
 }

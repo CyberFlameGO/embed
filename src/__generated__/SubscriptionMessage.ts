@@ -17,6 +17,7 @@ export interface SubscriptionMessage_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
 }
 
 export interface SubscriptionMessage_attachments {
@@ -154,6 +155,7 @@ export interface SubscriptionMessage_referencedMessage_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
 }
 
 export interface SubscriptionMessage_referencedMessage_attachments {

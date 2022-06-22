@@ -24,7 +24,7 @@ class Reaction extends React.Component<Props> {
             {url ? (
               <Emoji src={url} />
             ) : (
-              <Emoji className="reaction-emoji" reaction={true}>{emojiName}</Emoji>
+              <Emoji className="reaction-emoji" disableTooltip={true}>{emojiName}</Emoji>
             )}
             <Count className="reaction-count">{count}</Count>
           </Root>

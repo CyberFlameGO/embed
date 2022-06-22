@@ -18,6 +18,7 @@ fragment UpdatedMessage on UpdatedMessage {
         id
         flags
         name
+        roles
     }
 
     attachments {

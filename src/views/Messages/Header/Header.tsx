@@ -100,7 +100,14 @@ export function onClick()  {
 }
 
 export function login() {
-    authStore.discordLogin().then(async () => {
+    let ls: Storage
+    try {
+        ls = localStorage
+    } catch (e) {
+        generalStore.toggleMenu(true)
+    }
+
+    if (ls) authStore.discordLogin().then(async () => {
         await authStore.fetchDiscordUser();
         generalStore.needsUpdate = true;
         // await authStore.refreshChannels();

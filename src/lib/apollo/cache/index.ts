@@ -19,9 +19,15 @@ const cache = new InMemoryCache({
   dataIdFromObject
 })
 
-export const cacheLoaded = persistCache({
-  cache,
-  storage: localForage as any
-})
+let ls: Storage
+try {
+  ls = localStorage
+} catch (e) {}
+
+export const cacheLoaded =
+  ls ? persistCache({
+    cache,
+    storage: localForage as any
+  }) : Promise.resolve()
 
 export default cache;

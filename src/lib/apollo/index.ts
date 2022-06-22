@@ -6,7 +6,11 @@ import link from './link'
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = window.localStorage.getItem('token');
+  let token: string
+  try {
+    token = window.localStorage.getItem('token');
+  } catch (e) {}
+
   // return the headers to the context so httpLink can read them
   if (token) {
     return {

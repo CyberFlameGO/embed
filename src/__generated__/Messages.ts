@@ -17,6 +17,7 @@ export interface Messages_channel_TextChannel_messageBunch_messages_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -155,6 +156,7 @@ export interface Messages_channel_TextChannel_messageBunch_messages_referencedMe
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -334,6 +336,7 @@ export interface Messages_channel_TextChannel_messageBunch_pinnedMessages_author
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -472,6 +475,7 @@ export interface Messages_channel_TextChannel_messageBunch_pinnedMessages_refere
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -663,6 +667,7 @@ export interface Messages_channel_AnnouncementChannel_messageBunch_messages_auth
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -801,6 +806,7 @@ export interface Messages_channel_AnnouncementChannel_messageBunch_messages_refe
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -980,6 +986,7 @@ export interface Messages_channel_AnnouncementChannel_messageBunch_pinnedMessage
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -1118,6 +1125,7 @@ export interface Messages_channel_AnnouncementChannel_messageBunch_pinnedMessage
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 

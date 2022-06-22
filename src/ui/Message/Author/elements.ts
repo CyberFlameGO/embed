@@ -1,4 +1,5 @@
 import styled from '@lib/emotion'
+import { Twemoji } from '@ui/shared/Emoji/emoji'
 
 // Root
 export const Root = styled('span')`
@@ -61,4 +62,13 @@ export const VerifiedBot = styled('svg')`
   width: 15px;
   height: 15px;
   margin-left: -.25rem;
+`
+
+export const RoleIcon = styled.img`
+  margin-left: .25rem;
+`
+
+export const UnicodeEmoji = styled(Twemoji)`
+  vertical-align: unset;
+  margin-left: .25rem;
 `

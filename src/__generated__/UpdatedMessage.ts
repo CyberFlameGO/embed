@@ -17,6 +17,7 @@ export interface UpdatedMessage_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
 }
 
 export interface UpdatedMessage_attachments {
@@ -59,6 +60,7 @@ export interface UpdatedMessage_referencedMessage_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
 }
 
 export interface UpdatedMessage_referencedMessage_attachments {

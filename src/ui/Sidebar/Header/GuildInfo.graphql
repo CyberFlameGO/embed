@@ -17,6 +17,7 @@ query GuildInfo($guild: String!) {
             name
             id
             position
+            rateLimitPerUser
 
             category {
                 name
@@ -38,7 +39,10 @@ query GuildInfo($guild: String!) {
         roles {
             id
             name
+            position
             color
+            icon
+            unicodeEmoji
         }
 
         emojis {

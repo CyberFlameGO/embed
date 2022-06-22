@@ -17,6 +17,7 @@ export interface BaseSubscriptionMessage_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
 }
 
 export interface BaseSubscriptionMessage_attachments {

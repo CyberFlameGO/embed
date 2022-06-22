@@ -5,7 +5,8 @@ export const Root = styled('form')`
   flex-direction: column;
   flex-shrink: 0;
   position: relative;
-  margin: auto 15px 20px;
+  margin: auto 15px 0;
+  height: 66px;
 
   ${({ theme }) =>
     theme.url.preset === 'crate' &&
@@ -36,4 +37,26 @@ export const Field = styled('div')<FieldProps>`
     css`
       background-color: transparent;
     `};
+`
+
+interface SlowmodeProps {
+  red: boolean
+}
+export const Slowmode = styled.div<SlowmodeProps>`
+  height: 24px;
+  font-size: 14px;
+  color: ${({ red, theme }) => red ? 'rgba(237, 66, 39, .9)' : theme.colors._primary.fade(.3).string()};
+  margin-left: auto;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+
+  svg {
+    margin-left: 4px;
+  }
+
+  * {
+    color: inherit;
+  }
 `

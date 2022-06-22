@@ -17,6 +17,7 @@ export interface BaseMessage_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 

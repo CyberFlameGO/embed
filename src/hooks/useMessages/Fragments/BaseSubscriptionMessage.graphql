@@ -19,6 +19,7 @@ fragment BaseSubscriptionMessage on Message {
         id
         flags
         name
+        roles
     }
 
     attachments {

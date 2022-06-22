@@ -17,6 +17,7 @@ export interface MoreMessages_channel_TextChannel_messageBunch_messages_author {
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -155,6 +156,7 @@ export interface MoreMessages_channel_TextChannel_messageBunch_messages_referenc
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -345,6 +347,7 @@ export interface MoreMessages_channel_AnnouncementChannel_messageBunch_messages_
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 
@@ -483,6 +486,7 @@ export interface MoreMessages_channel_AnnouncementChannel_messageBunch_messages_
   id: string;
   flags: number | null;
   name: string;
+  roles: string[] | null;
   color: number;
 }
 

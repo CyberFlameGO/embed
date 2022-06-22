@@ -3,9 +3,11 @@ import Moment from 'moment'
 import * as React from 'react'
 
 import { Sysadmin, Tag, Verified } from "./Badges";
-import { Name, Root, Time, VerifiedBot } from './elements'
+import { Name, RoleIcon, Root, Time, UnicodeEmoji, VerifiedBot } from './elements'
 import { Locale } from '@lib/Locale';
 import Tooltip from 'rc-tooltip';
+import { generalStore } from '@store';
+import webpCheck from '@ui/shared/webpCheck'
 
 interface Props {
   author: Message_author
@@ -66,6 +68,33 @@ export const tags = ({author, crosspost, referenceGuild, guest}: Omit<Props, 'ti
     {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
   </React.Fragment>
 
+const roleIcon = (roleIDs: string[]) => {
+  if (!generalStore.guild?.roles?.length || !roleIDs) return null
+
+  const roles = roleIDs.map(id => generalStore.guild.roles.find(r => r.id === id)).sort((a, b) => b.position - a.position)
+
+  const role = roles.find(r => r.icon || r.unicodeEmoji)
+  if (!role) return null
+
+  if (role.icon) return (
+    <Tooltip
+      placement="top"
+      overlay={role.name}
+    >
+      <RoleIcon className="role-icon role-icon-image" src={webpCheck(`https://cdn.discordapp.com/role-icons/${role.id}/${role.icon}.webp`)} />
+    </Tooltip>)
+  
+  if (role.unicodeEmoji) return (
+    <Tooltip
+      placement="top"
+      overlay={role.name}
+    >
+      <span><UnicodeEmoji className="role-icon" disableTooltip={true}>{role.unicodeEmoji}</UnicodeEmoji></span>
+    </Tooltip>)
+
+  return null
+}
+
 class Author extends React.PureComponent<Props> {
   render() {
     const { author, time } = this.props;
@@ -77,6 +106,7 @@ class Author extends React.PureComponent<Props> {
         <Name color={hexColor} className="name">
           {author.name}
         </Name>
+        {roleIcon(author.roles)}
         {tags(this.props)}
         {Author.verified({ id: author.id })}
         <Timestamp time={time} />
